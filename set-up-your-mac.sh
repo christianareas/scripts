@@ -45,6 +45,7 @@ prompt_and_run () {
 commands () {
   echo "Installing Command Line Tools for Xcode..."
   xcode-select --install
+  sudo xcodebuild -license accept
 }
 
 prompt_and_run \
@@ -57,9 +58,8 @@ prompt_and_run \
 commands () {
   echo "Installing Homebrew..."
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  echo '# Set PATH, MANPATH, etc., for Homebrew.' >> ~/.zprofile
-  echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
-  eval "$(/opt/homebrew/bin/brew shellenv)"
+  (echo; echo 'eval "$(/usr/local/bin/brew shellenv)"') >> ~/.zprofile
+  eval "$(/usr/local/bin/brew shellenv)"
 }
 
 prompt_and_run \
@@ -72,7 +72,6 @@ prompt_and_run \
 commands () {
   echo "Updating Homebrew taps..."
   brew tap homebrew/cask-versions
-  brew tap homebrew/cask-drivers
   brew tap homebrew/cask-fonts
   brew tap mongodb/brew
   brew tap lencx/chatgpt https://github.com/lencx/ChatGPT.git
@@ -165,7 +164,6 @@ commands () {
     appcleaner \
     balenaetcher \
     brave-browser \
-    chatgpt \
     discord \
     elgato-control-center \
     elgato-stream-deck \
@@ -190,6 +188,7 @@ commands () {
     visual-studio-code \
     warp \
     zoom
+  brew install chatgpt --no-quarantine
 }
 
 prompt_and_run \
@@ -271,32 +270,13 @@ prompt_and_run \
 commands () {
   echo "Installing GitHub CLI..."
   brew install gh
+  gh auth login
 }
 
 prompt_and_run \
   "Do you want to install GitHub CLI?" \
   commands
 
-# ================
-# Configure GitHub
-# ================
-commands () {
-  echo "Configuring GitHub..."
-  # create an ssh key
-  ssh-keygen -t ed25519 -C "$(whoami)@$(hostname -s)"
-  # start the ssh agent (the ssh agent manages keys)
-  eval "$(ssh-agent -s)"
-  # configure ssh
-  cp files/config ~/.ssh/config
-  # add the ssh key to keychain
-  ssh-add --apple-use-keychain ~/.ssh/id_ed25519
-  # add the ssh key to GitHub
-  gh ssh-key add ~/.ssh/id_ed25519.pub
-}
-
-prompt_and_run \
-  "Do you want to configure GitHub?" \
-  commands
 
 # ===========
 # Install Pandoc
@@ -335,18 +315,6 @@ prompt_and_run \
   "Do you want to install FNM?" \
   commands
 
-# ===============
-# Install nodemon
-# ===============
-commands () {
-  echo "Installing nodemon..."
-  npm i -g nodemon
-}
-
-prompt_and_run \
-  "Do you want to install nodemon?" \
-  commands
-
 # =============
 # Install MySQL
 # =============
@@ -362,8 +330,8 @@ prompt_and_run \
 # Install PostgreSQL
 # ==================
 commands () {
-  brew install postgresql
-  brew services start postgresql
+  brew install postgresql@15
+  brew services start postgresql@15
 }
 
 prompt_and_run \
