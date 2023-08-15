@@ -187,6 +187,7 @@ commands () {
     visual-studio \
     visual-studio-code \
     warp \
+    webex \
     zoom
   brew install chatgpt --no-quarantine
 }
