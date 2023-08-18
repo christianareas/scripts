@@ -197,7 +197,7 @@ commands () {
 }
 
 prompt_and_run \
-  "Do you want to install Homebrew Cask apps?" \
+  "Do you want to install Homebrew Cask and CLI apps?" \
   commands
 
 # ==================================
