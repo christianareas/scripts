@@ -154,9 +154,9 @@ prompt_and_run \
   "Do you want to install App Store apps?" \
   commands
 
-# ==========================
-# Install Homebrew Cask Apps
-# ==========================
+# ==================================
+# Install Homebrew Cask and CLI Apps
+# ==================================
 commands () {
   echo "Installing Homebrew cask apps..."
   brew install --cask \
@@ -165,12 +165,16 @@ commands () {
     balenaetcher \
     brave-browser \
     discord \
+    docker \
     elgato-control-center \
     elgato-stream-deck \
     firefox \
     google-chrome \
+    helix \
     itsycal \
     karabiner-elements \
+    kind \
+    kubectl \
     microsoft-edge \
     microsoft-teams \
     mongodb-compass \
@@ -276,32 +280,6 @@ commands () {
 
 prompt_and_run \
   "Do you want to install GitHub CLI?" \
-  commands
-
-
-# ===========
-# Install Pandoc
-# ===========
-# commands () {
-#   echo "Installing pandoc..."
-#   brew install pandoc
-# }
-# 
-# prompt_and_run \
-#   "Do you want to install pandoc?" \
-#   commands
-
-# =========================
-# Install Homebrew CLI Apps
-# =========================
-commands () {
-  echo "Installing Homebrew CLI apps..."
-  brew install \
-    helix
-}
-
-prompt_and_run \
-  "Do you want to install Homebrew CLI apps?" \
   commands
 
 # ===========
