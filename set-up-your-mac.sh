@@ -146,8 +146,8 @@ commands () {
     1153157709 \
     1496833156 \
     1284863847 \
-    1147396723 \
-    497799835
+    1147396723
+    # 497799835
 }
 
 prompt_and_run \
@@ -170,7 +170,6 @@ commands () {
     elgato-stream-deck \
     firefox \
     google-chrome \
-    helix \
     itsycal \
     karabiner-elements \
     kind \
