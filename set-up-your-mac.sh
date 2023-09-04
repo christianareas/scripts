@@ -155,10 +155,14 @@ prompt_and_run \
   commands
 
 # ==================================
-# Install Homebrew Cask and CLI Apps
+# Install Homebrew CLI and Cask Apps
 # ==================================
 commands () {
-  echo "Installing Homebrew cask apps..."
+  echo "Installing Homebrew CLI and cask apps..."
+  brew install \
+    helix \
+    kind \
+    kubectl
   brew install --cask \
     anaconda \
     appcleaner \
@@ -172,8 +176,6 @@ commands () {
     google-chrome \
     itsycal \
     karabiner-elements \
-    kind \
-    kubectl \
     microsoft-edge \
     microsoft-teams \
     mongodb-compass \
@@ -192,11 +194,12 @@ commands () {
     warp \
     webex \
     zoom
-  brew install chatgpt --no-quarantine
+  brew install --cask \
+    chatgpt --no-quarantine
 }
 
 prompt_and_run \
-  "Do you want to install Homebrew Cask and CLI apps?" \
+  "Do you want to install Homebrew CLI and cask apps?" \
   commands
 
 # ==================================
