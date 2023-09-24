@@ -118,6 +118,7 @@ prompt_and_run \
 # 803453959   Slack
 # 1153157709  Speedtest
 # 1496833156  Swift Playgrounds
+# 1225570693  Ulysses
 # 1284863847  Unsplashed Wallpapers
 # 1147396723  WhatsApp
 # 497799835   Xcode
@@ -145,6 +146,7 @@ commands () {
     803453959 \
     1153157709 \
     1496833156 \
+    1225570693 \
     1284863847 \
     1147396723
     # 497799835
