@@ -280,6 +280,7 @@ commands () {
   echo "Installing GitHub CLI..."
   brew install gh
   gh auth login
+  gh extension install github/gh-copilot --force
 }
 
 prompt_and_run \
