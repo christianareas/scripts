@@ -185,6 +185,7 @@ commands () {
     postman \
     qmk-toolbox \
     readdle-spark \
+    rectangle \
     responsively \
     scrivener \
     stoplight-studio \
