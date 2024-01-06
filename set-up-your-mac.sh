@@ -190,6 +190,7 @@ commands () {
     scrivener \
     stoplight-studio \
     tableplus \
+    transmission \
     unity-hub \
     via \
     visual-studio \
