@@ -220,7 +220,7 @@ commands () {
 }
 
 prompt_and_run \
-  "Do you want to download and install Logitech apps?" \
+  "Do you want to download and install Logi Tune?" \
   commands
 
 # =============
