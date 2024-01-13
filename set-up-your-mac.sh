@@ -375,6 +375,7 @@ commands () {
 # Logi Tune
 # Paste
 # Speedtest
+# Rectangle
 # Unsplash Wallpapers
 # Wi-Fi
 # Sound
@@ -389,12 +390,12 @@ commands () {
 # Dock
 # ====
 # Finder
+# Messages
+# FaceTime
 # Spark
 # Calendars
 # Reminders
 # Day One
-# Messages
-# FaceTime
 # Discord
 # Slack
 # Safari
@@ -402,16 +403,17 @@ commands () {
 # Podcasts
 # News
 # Music
-# TV
 # iA Writer
 # Obsidian
+# Pages
 # Scrivener
 # System Settings
+# ChatGPT
 # Warp
 # Visual Studio Code
+# TablePlus
 # Stoplight Studio
-# Xcode
-# Swift Playgrounds
+# Postman
 
 prompt_and_run \
   "Do you want to configure macOS?" \
