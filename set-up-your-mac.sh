@@ -178,6 +178,7 @@ commands () {
     google-chrome \
     itsycal \
     karabiner-elements \
+    logi-options-plus \
     microsoft-edge \
     microsoft-teams \
     mongodb-compass \
@@ -187,6 +188,7 @@ commands () {
     readdle-spark \
     rectangle \
     responsively \
+    homebrew/cask-versions/safari-technology-preview \
     scrivener \
     stoplight-studio \
     tableplus \
@@ -206,28 +208,12 @@ prompt_and_run \
   "Do you want to install Homebrew CLI and cask apps?" \
   commands
 
-# ==================================
-# Download Safari Technology Preview
-# ==================================
+# ==============================
+# Download and Install Logi Tune
+# ==============================
 commands () {
-  echo "Downloading Safari Technology Preview..."
-  # download Safari Technology Preview
-  open https://developer.apple.com/safari/resources/  
-}
-
-prompt_and_run \
-  "Do you want to download Safari Technology Preview?" \
-  commands
-
-# ==================================
-# Download and Install Logitech Apps
-# ==================================
-commands () {
-  echo "Downloading and installing Logitech apps..."
+  echo "Downloading and installing Logi Tune..."
   brew install wget
-  # download and open Logi Options+ installer
-  wget -P ~/Downloads https://download01.logi.com/web/ftp/pub/techsupport/optionsplus/logioptionsplus_installer.zip
-  open ~/Downloads/logioptionsplus_installer.app
   # download and open Logi Tune installer
   wget -P ~/Downloads https://software.vc.logitech.com/downloads/tune/LogiTuneInstaller.dmg
   open ~/Downloads/LogiTuneInstaller.dmg
