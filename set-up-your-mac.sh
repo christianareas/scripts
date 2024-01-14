@@ -360,14 +360,15 @@ commands () {
 # Elgato Stream Deck
 # Logi Tune
 # Paste
-# Speedtest
 # Rectangle
+# Speedtest
 # Unsplash Wallpapers
 # Wi-Fi
 # Sound
 # Bluetooth
 # Battery (if applicable)
 # Focus
+# Fast User Switching (if applicable)
 # Itsycal
 # Control Center
 # Clock
