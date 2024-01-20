@@ -182,6 +182,8 @@ commands () {
     microsoft-edge \
     microsoft-teams \
     mongodb-compass \
+    notion \
+    notion-calendar \
     obsidian \
     postman \
     qmk-toolbox \
