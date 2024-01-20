@@ -287,6 +287,24 @@ prompt_and_run \
   "Do you want to install FNM?" \
   commands
 
+# ========================
+# Update and Configure FNM
+# ========================
+commands () {
+  echo "Updating and configuring FNM..."
+  fnm install 16
+  fnm install 18
+  fnm install 19
+  fnm install 20
+  fnm install 21
+  fnm default 21
+  fnm ls
+}
+
+prompt_and_run \
+  "Do you want to update and configure FNM?" \
+  commands
+
 # =============
 # Install MySQL
 # =============
