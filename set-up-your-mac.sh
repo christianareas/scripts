@@ -201,6 +201,7 @@ commands () {
     visual-studio-code \
     warp \
     webex \
+    whisky \
     zoom
   brew install --cask \
     chatgpt --no-quarantine
