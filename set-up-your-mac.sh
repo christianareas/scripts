@@ -295,6 +295,7 @@ prompt_and_run \
 # ========================
 commands () {
   echo "Updating and configuring FNM..."
+  source ~/.zshrc
   fnm install 16
   fnm install 18
   fnm install 19
