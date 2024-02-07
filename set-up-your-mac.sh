@@ -39,6 +39,7 @@ prompt_and_run () {
   done
 }
 
+
 # ====================================
 # Install Command Line Tools for Xcode
 # ====================================
@@ -51,6 +52,7 @@ commands () {
 prompt_and_run \
   "Do you want to install Command Line Tools for Xcode?" \
   commands
+
 
 # ================
 # Install Homebrew
@@ -65,6 +67,7 @@ commands () {
 prompt_and_run \
   "Do you want to install Homebrew?" \
   commands
+
 
 # ====================
 # Update Homebrew Taps
@@ -81,6 +84,7 @@ prompt_and_run \
   "Do you want to update Homebrew taps?" \
   commands
 
+
 # =====================
 # Install App Store CLI
 # =====================
@@ -92,6 +96,7 @@ commands () {
 prompt_and_run \
   "Do you want to install the App Store CLI?" \
   commands
+
 
 # ======================
 # Install App Store Apps
@@ -148,13 +153,30 @@ commands () {
     1496833156 \
     1225570693 \
     1284863847 \
-    1147396723
-    # 497799835
+    1147396723 \
+    497799835
 }
 
 prompt_and_run \
   "Do you want to install App Store apps?" \
   commands
+
+
+# ==============================
+# Download and Install Logi Tune
+# ==============================
+commands () {
+  echo "Downloading and installing Logi Tune..."
+  brew install wget
+  # download and open Logi Tune installer
+  wget -P ~/Downloads https://software.vc.logitech.com/downloads/tune/LogiTuneInstaller.dmg
+  open ~/Downloads/LogiTuneInstaller.dmg
+}
+
+prompt_and_run \
+  "Do you want to download and install Logi Tune?" \
+  commands
+
 
 # ==================================
 # Install Homebrew CLI and Cask Apps
@@ -168,13 +190,13 @@ commands () {
   brew install --cask \
     anaconda \
     appcleaner \
+    arc \
     balenaetcher \
     brave-browser \
     discord \
     docker \
     elgato-control-center \
     elgato-stream-deck \
-    firefox \
     google-chrome \
     itsycal \
     karabiner-elements \
@@ -211,41 +233,6 @@ prompt_and_run \
   "Do you want to install Homebrew CLI and cask apps?" \
   commands
 
-# ==============================
-# Download and Install Logi Tune
-# ==============================
-commands () {
-  echo "Downloading and installing Logi Tune..."
-  brew install wget
-  # download and open Logi Tune installer
-  wget -P ~/Downloads https://software.vc.logitech.com/downloads/tune/LogiTuneInstaller.dmg
-  open ~/Downloads/LogiTuneInstaller.dmg
-}
-
-prompt_and_run \
-  "Do you want to download and install Logi Tune?" \
-  commands
-
-# =============
-# Install Fonts
-# =============
-commands () {
-  echo "Installing fonts..."
-  brew install --cask \
-    font-sf-pro \
-    font-sf-compact \
-    font-sf-mono \
-    font-sf-arabic \
-    font-new-york \
-    font-ia-writer-duo \
-    font-ia-writer-duospace \
-    font-ia-writer-mono \
-    font-ia-writer-quattro
-}
-
-prompt_and_run \
-  "Do you want to install fonts?" \
-  commands
 
 # =============
 # Configure git
@@ -278,6 +265,7 @@ prompt_and_run \
   "Do you want to install GitHub CLI?" \
   commands
 
+
 # ===========
 # Install FNM
 # ===========
@@ -289,6 +277,7 @@ commands () {
 prompt_and_run \
   "Do you want to install FNM?" \
   commands
+
 
 # ========================
 # Update and Configure FNM
@@ -309,6 +298,7 @@ prompt_and_run \
   "Do you want to update and configure FNM?" \
   commands
 
+
 # =============
 # Install MySQL
 # =============
@@ -319,6 +309,7 @@ commands () {
 prompt_and_run \
   "Do you want to install MySQL?" \
   commands
+
 
 # ==================
 # Install PostgreSQL
@@ -344,6 +335,29 @@ commands () {
 prompt_and_run \
   "Do you want to install MongoDB?" \
   commands
+
+
+# =============
+# Install Fonts
+# =============
+commands () {
+  echo "Installing fonts..."
+  brew install --cask \
+    font-sf-pro \
+    font-sf-compact \
+    font-sf-mono \
+    font-sf-arabic \
+    font-new-york \
+    font-ia-writer-duo \
+    font-ia-writer-duospace \
+    font-ia-writer-mono \
+    font-ia-writer-quattro
+}
+
+prompt_and_run \
+  "Do you want to install fonts?" \
+  commands
+
 
 # ===============
 # Configure macOS
@@ -428,10 +442,12 @@ prompt_and_run \
   "Do you want to configure macOS?" \
   commands
 
+
 # ===
 # Fin
 # ===
 echo "*Fin*"
+
 
 # Todo: Add something to set up and source .zshrc.
 # # fnm
