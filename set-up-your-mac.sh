@@ -115,7 +115,6 @@ prompt_and_run \
 # 409183694   Keynote
 # 462058435   Microsoft Excel
 # 462054704   Microsoft Word
-# 1592917505  Noir - Dark Mode for Safari
 # 409203825   Numbers
 # 1474884867  Orchid
 # 409201541   Pages
@@ -123,7 +122,6 @@ prompt_and_run \
 # 803453959   Slack
 # 1153157709  Speedtest
 # 1496833156  Swift Playgrounds
-# 1225570693  Ulysses
 # 1284863847  Unsplashed Wallpapers
 # 1147396723  WhatsApp
 # 497799835   Xcode
@@ -151,7 +149,6 @@ commands () {
     803453959 \
     1153157709 \
     1496833156 \
-    1225570693 \
     1284863847 \
     1147396723 \
     497799835
@@ -211,7 +208,6 @@ commands () {
     qmk-toolbox \
     readdle-spark \
     rectangle \
-    responsively \
     homebrew/cask-versions/safari-technology-preview \
     scrivener \
     stoplight-studio \
@@ -423,11 +419,12 @@ commands () {
 # Slack
 # Safari
 # Safari Technology Preview
+# Brave
+# Arc
 # Podcasts
 # News
 # Music
 # iA Writer
-# Obsidian
 # Pages
 # Scrivener
 # System Settings
