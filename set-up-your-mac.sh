@@ -204,6 +204,7 @@ commands () {
     notion \
     notion-calendar \
     obsidian \
+    ollama \
     postman \
     qmk-toolbox \
     readdle-spark \
