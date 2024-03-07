@@ -433,7 +433,6 @@ commands () {
 # Warp
 # Visual Studio Code
 # TablePlus
-# Stoplight Studio
 # Postman
 
 prompt_and_run \
