@@ -285,7 +285,6 @@ commands () {
   source ~/.zshrc
   fnm install 16
   fnm install 18
-  fnm install 19
   fnm install 20
   fnm install 21
   fnm default 21
