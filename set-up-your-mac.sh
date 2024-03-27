@@ -204,7 +204,6 @@ commands () {
     microsoft-teams \
     mongodb-compass \
     notion \
-    notion-calendar \
     obsidian \
     ollama \
     postman \
