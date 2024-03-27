@@ -194,6 +194,8 @@ commands () {
     docker \
     elgato-control-center \
     elgato-stream-deck \
+    fantastical \
+    github \
     google-chrome \
     itsycal \
     karabiner-elements \
