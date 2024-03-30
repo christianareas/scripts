@@ -194,6 +194,7 @@ commands () {
     docker \
     elgato-control-center \
     elgato-stream-deck \
+    figma \
     fantastical \
     github \
     google-chrome \
