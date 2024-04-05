@@ -77,7 +77,6 @@ commands () {
   brew tap homebrew/cask-versions
   brew tap homebrew/cask-fonts
   brew tap mongodb/brew
-  brew tap lencx/chatgpt https://github.com/lencx/ChatGPT.git
 }
 
 prompt_and_run \
@@ -224,8 +223,6 @@ commands () {
     webex \
     whisky \
     zoom
-  brew install --cask \
-    chatgpt --no-quarantine
 }
 
 prompt_and_run \
@@ -284,7 +281,6 @@ prompt_and_run \
 commands () {
   echo "Updating and configuring FNM..."
   source ~/.zshrc
-  fnm install 16
   fnm install 18
   fnm install 20
   fnm install 21
