@@ -397,6 +397,46 @@ prompt_and_run \
   commands
 
 
+# ===========
+# Set up Dock
+# ===========
+commands () {
+  echo "Setting up Dock..."
+  dockutil --remove all --no-restart
+  dockutil --add "/Applications/Messages.app" --no-restart
+  dockutil --add "/Applications/FaceTime.app" --no-restart
+  dockutil --add "/Applications/Spark Desktop.app" --no-restart
+  dockutil --add "/Applications/Fantastical.app" --no-restart
+  dockutil --add "/Applications/Reminders.app" --no-restart
+  dockutil --add "/Applications/Day One.app" --no-restart
+  dockutil --add "/Applications/Discord.app" --no-restart
+  dockutil --add "/Applications/Slack.app" --no-restart
+  dockutil --add "/Applications/Safari.app" --no-restart
+  dockutil --add "/Applications/Safari Technology Preview.app" --no-restart
+  dockutil --add "/Applications/Brave Browser.app" --no-restart
+  dockutil --add "/Applications/Arc.app" --no-restart
+  dockutil --add "/Applications/Podcasts.app" --no-restart
+  dockutil --add "/Applications/News.app" --no-restart
+  dockutil --add "/Applications/Music.app" --no-restart
+  dockutil --add "/Applications/iA Writer.app" --no-restart
+  dockutil --add "/Applications/Pages.app" --no-restart
+  dockutil --add "/Applications/Scrivener.app" --no-restart
+  dockutil --add "/Applications/System Settings.app" --no-restart
+  dockutil --add "~/Applications/ChatGPT.app" --no-restart
+  dockutil --add "/Applications/Warp.app" --no-restart
+  dockutil --add "/Applications/Visual Studio Code.app" --no-restart
+  dockutil --add "/Applications/TablePlus.app" --no-restart
+  dockutil --add "/Applications/Postman.app" --no-restart
+  dockutil --add "/Applications" --view grid --display stack --section others --no-restart
+  dockutil --add "~/Downloads" --view grid --display stack --section others --no-restart
+  killall Dock
+}
+
+prompt_and_run \
+  "Do you want to set up Dock?" \
+  commands
+
+
 # ===============
 # Configure macOS
 # ===============
@@ -425,6 +465,11 @@ commands () {
   # - keyboard settings
 }
 
+prompt_and_run \
+  "Do you want to configure macOS?" \
+  commands
+
+
 # ========
 # Menu Bar
 # ========
@@ -445,39 +490,6 @@ commands () {
 # Fast User Switching (if applicable)
 # Control Center
 # Clock
-
-# ====
-# Dock
-# ====
-# Finder
-# Messages
-# FaceTime
-# Spark
-# Calendars
-# Reminders
-# Day One
-# Discord
-# Slack
-# Safari
-# Safari Technology Preview
-# Brave
-# Arc
-# Podcasts
-# News
-# Music
-# iA Writer
-# Pages
-# Scrivener
-# System Settings
-# ChatGPT
-# Warp
-# Visual Studio Code
-# TablePlus
-# Postman
-
-prompt_and_run \
-  "Do you want to configure macOS?" \
-  commands
 
 
 # ===
