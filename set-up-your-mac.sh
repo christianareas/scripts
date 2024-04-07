@@ -104,7 +104,6 @@ prompt_and_run \
 # 1440147259  AdGuard for Safari
 # 640199958   Apple Developer
 # 937984704   Amphetamine
-# 608834326   Calendars
 # 1055511498  Day One
 # 1482920575  DuckDuckGo Privacy Essentials
 # 424389933   Final Cut Pro
@@ -131,7 +130,6 @@ commands () {
     1440147259 \
     640199958 \
     937984704 \
-    608834326 \
     409183694 \
     409203825 \
     409201541 \
@@ -198,7 +196,6 @@ commands () {
     fantastical \
     github \
     google-chrome \
-    itsycal \
     karabiner-elements \
     logi-options-plus \
     microsoft-edge \
