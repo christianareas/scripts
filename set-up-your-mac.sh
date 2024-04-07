@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # todo:
-# - use dockutil to set up the dock
 # - reorganize installs by type (for example, install mysql and tableplus in one step).
 # - tell the user what things are about to get installed, and possibly give them a chance to select options.
 # - detect what’s already installed and skip those things.
