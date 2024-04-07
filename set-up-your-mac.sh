@@ -54,15 +54,34 @@ prompt_and_run \
   commands
 
 
+# ===============
+# Install Rosetta
+# ===============
+commands () {
+  echo "Installing Rosetta..."
+  sudo softwareupdate --install-rosetta
+}
+
+prompt_and_run \
+  "Do you want to install Rosetta?" \
+  commands
+
+
 # ================
 # Install Homebrew
 # ================
 commands () {
   echo "Installing Homebrew..."
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  # Todo: Update to new path.
-  (echo; echo 'eval "$(/usr/local/bin/brew shellenv)"') >> ~/.zprofile
-  eval "$(/usr/local/bin/brew shellenv)"
+  # configure apple silicon mac
+  if [[ "$(uname -m)" == "arm64" ]]; then
+    (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> ~/.zprofile
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  # configure intel mac
+  else
+    (echo; echo 'eval "$(/usr/local/bin/brew shellenv)"') >> ~/.zprofile
+    eval "$(/usr/local/bin/brew shellenv)"
+  fi
 }
 
 prompt_and_run \
@@ -179,6 +198,7 @@ prompt_and_run \
 commands () {
   echo "Installing Homebrew CLI and cask apps..."
   brew install \
+    dockutil \
     helix \
     kind \
     kubectl
@@ -190,7 +210,6 @@ commands () {
     brave-browser \
     discord \
     docker \
-    dockutil \
     elgato-control-center \
     elgato-stream-deck \
     figma \
