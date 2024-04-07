@@ -190,6 +190,7 @@ commands () {
     brave-browser \
     discord \
     docker \
+    dockutil \
     elgato-control-center \
     elgato-stream-deck \
     figma \
