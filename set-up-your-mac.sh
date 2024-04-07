@@ -60,6 +60,7 @@ prompt_and_run \
 commands () {
   echo "Installing Homebrew..."
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  # Todo: Update to new path.
   (echo; echo 'eval "$(/usr/local/bin/brew shellenv)"') >> ~/.zprofile
   eval "$(/usr/local/bin/brew shellenv)"
 }
@@ -212,7 +213,6 @@ commands () {
     rectangle \
     homebrew/cask-versions/safari-technology-preview \
     scrivener \
-    stoplight-studio \
     tableplus \
     transmission \
     unity-hub \
