@@ -476,6 +476,7 @@ prompt_and_run \
 # Day One
 # Elgato Control Center
 # Elgato Stream Deck
+# Fantastical
 # Logi Tune
 # Paste
 # Rectangle
