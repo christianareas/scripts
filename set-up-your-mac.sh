@@ -284,12 +284,25 @@ prompt_and_run \
 # Add symlink to iCloud Drive
 # ===========================
 commands () {
-  echo "Addiing symlink to iCloud Drive..."
+  echo "Adding symlink to iCloud Drive..."
   ln -s ~/Library/Mobile\ Documents/com~apple~CloudDocs ~/iCloud\ Drive
 }
 
 prompt_and_run \
   "Do you want to add a symlink to iCloud Drive?" \
+  commands
+
+
+# ===============================
+# Add symlink to iCloud Downloads
+# ===============================
+commands () {
+  echo "Adding symlink to iCloud Downloads..."
+  ln -s ~/Library/Mobile\ Documents/com~apple~CloudDocs/Downloads ~/Downloads/iCloud\ Downloads
+}
+
+prompt_and_run \
+  "Do you want to add a symlink to iCloud Downloads?" \
   commands
 
 
