@@ -416,7 +416,6 @@ commands () {
 # Battery (if applicable)
 # Focus
 # Fast User Switching (if applicable)
-# Itsycal
 # Control Center
 # Clock
 
