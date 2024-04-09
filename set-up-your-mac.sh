@@ -230,6 +230,7 @@ commands () {
     rectangle \
     homebrew/cask-versions/safari-technology-preview \
     scrivener \
+    steam \
     tableplus \
     transmission \
     unity-hub \
