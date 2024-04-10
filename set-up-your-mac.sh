@@ -209,6 +209,7 @@ commands () {
     appcleaner \
     arc \
     balenaetcher \
+    beeper \
     brave-browser \
     discord \
     docker \
