@@ -121,6 +121,7 @@ prompt_and_run \
 # Install App Store Apps
 # ======================
 # 1440147259  AdGuard for Safari
+# 545519333   Amazon Prime Video
 # 640199958   Apple Developer
 # 937984704   Amphetamine
 # 1055511498  Day One
@@ -142,12 +143,13 @@ prompt_and_run \
 # 1153157709  Speedtest
 # 1496833156  Swift Playgrounds
 # 1284863847  Unsplashed Wallpapers
-# 1147396723  WhatsApp
+# 310633997  WhatsApp
 # 497799835   Xcode
 commands () {
   echo "Installing App Store apps..."
   mas install \
     1440147259 \
+    545519333 \
     640199958 \
     937984704 \
     1055511498 \
