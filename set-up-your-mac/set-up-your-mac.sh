@@ -180,22 +180,6 @@ prompt_and_run \
   commands
 
 
-# ==============================
-# Download and Install Logi Tune
-# ==============================
-commands () {
-  echo "Downloading and installing Logi Tune..."
-  brew install wget
-  # download and open Logi Tune installer
-  wget -P ~/Downloads https://software.vc.logitech.com/downloads/tune/LogiTuneInstaller.dmg
-  open ~/Downloads/LogiTuneInstaller.dmg
-}
-
-prompt_and_run \
-  "Do you want to download and install Logi Tune?" \
-  commands
-
-
 # ==================================
 # Install Homebrew CLI and Cask Apps
 # ==================================
@@ -205,7 +189,8 @@ commands () {
     dockutil \
     helix \
     kind \
-    kubectl
+    kubectl \
+    wget
   brew install --cask \
     anaconda \
     appcleaner \
@@ -251,6 +236,36 @@ commands () {
 prompt_and_run \
   "Do you want to install Homebrew CLI and cask apps?" \
   commands
+
+
+# ==============================
+# Download and Install Logi Tune
+# ==============================
+commands () {
+  echo "Downloading and installing Logi Tune..."
+  # download and open Logi Tune installer
+  wget -P ~/Downloads https://software.vc.logitech.com/downloads/tune/LogiTuneInstaller.dmg
+  open ~/Downloads/LogiTuneInstaller.dmg
+}
+
+prompt_and_run \
+  "Do you want to download and install Logi Tune?" \
+  commands
+
+
+# # ==============================
+# # Download and Install AM Master
+# # ==============================
+# commands () {
+#   echo "Downloading and installing AM Master..."
+#   # download and open AM Master installer
+#   wget -P ~/Downloads https://software.vc.logitech.com/downloads/tune/LogiTuneInstaller.dmg
+#   open ~/Downloads/LogiTuneInstaller.dmg
+# }
+
+# prompt_and_run \
+#   "Do you want to download and install AM Master?" \
+#   commands
 
 
 # =============
@@ -482,7 +497,6 @@ prompt_and_run \
 # Day One
 # Elgato Control Center
 # Elgato Stream Deck
-# Fantastical
 # Logi Tune
 # Paste
 # Rectangle
@@ -494,6 +508,7 @@ prompt_and_run \
 # Battery (if applicable)
 # Focus
 # Fast User Switching (if applicable)
+# Fantastical
 # Control Center
 # Clock
 
@@ -511,3 +526,13 @@ echo "*Fin*"
 
 # # conda
 # export PATH="/opt/homebrew/anaconda3/bin:$PATH"
+
+# Todo: Install Add to Dock... web apps:
+# Amazon
+# Disney+
+# ChatGPT
+# GitHub
+# Hulu
+# NBA
+# Netflix
+
