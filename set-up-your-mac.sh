@@ -231,7 +231,7 @@ commands () {
     qmk-toolbox \
     readdle-spark \
     rectangle \
-    homebrew/cask-versions/safari-technology-preview \
+    safari-technology-preview \
     scrivener \
     steam \
     tableplus \
