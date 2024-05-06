@@ -406,8 +406,6 @@ commands () {
     font-sf-mono \
     font-sf-arabic \
     font-new-york \
-    font-ia-writer-duo \
-    font-ia-writer-duospace \
     font-ia-writer-mono \
     font-ia-writer-quattro
 }
