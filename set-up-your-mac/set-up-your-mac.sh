@@ -4,6 +4,7 @@
 # - reorganize installs by type (for example, install mysql and tableplus in one step).
 # - tell the user what things are about to get installed, and possibly give them a chance to select options.
 # - detect what’s already installed and skip those things.
+# - add Add to Dock... web apps: Amazon, Disney+, ChatGPT, GitHub, Hulu, NBA, Netflix.
 # - write in a different language, such as JavaScript, Rust, or Swift -- or all of the above!
 
 # reminder, to make this script executable:
@@ -39,7 +40,6 @@ prompt_and_run () {
   done
 }
 
-
 # ====================================
 # Install Command Line Tools for Xcode
 # ====================================
@@ -53,7 +53,6 @@ prompt_and_run \
   "Do you want to install Command Line Tools for Xcode?" \
   commands
 
-
 # ===============
 # Install Rosetta
 # ===============
@@ -65,7 +64,6 @@ commands () {
 prompt_and_run \
   "Do you want to install Rosetta?" \
   commands
-
 
 # ================
 # Install Homebrew
@@ -88,7 +86,6 @@ prompt_and_run \
   "Do you want to install Homebrew?" \
   commands
 
-
 # ====================
 # Update Homebrew Taps
 # ====================
@@ -103,7 +100,6 @@ prompt_and_run \
   "Do you want to update Homebrew taps?" \
   commands
 
-
 # =====================
 # Install App Store CLI
 # =====================
@@ -115,7 +111,6 @@ commands () {
 prompt_and_run \
   "Do you want to install the App Store CLI?" \
   commands
-
 
 # ======================
 # Install App Store Apps
@@ -179,7 +174,6 @@ prompt_and_run \
   "Do you want to install App Store apps?" \
   commands
 
-
 # ==================================
 # Install Homebrew CLI and Cask Apps
 # ==================================
@@ -237,7 +231,6 @@ prompt_and_run \
   "Do you want to install Homebrew CLI and cask apps?" \
   commands
 
-
 # ==============================
 # Download and Install Logi Tune
 # ==============================
@@ -252,21 +245,18 @@ prompt_and_run \
   "Do you want to download and install Logi Tune?" \
   commands
 
+# ==============================
+# Download and Install AM Master
+# ==============================
+commands () {
+  echo "Downloading and installing AM Master..."
+  # download and open AM Master installer
+  open https://www.angrymiao.com/en/am-master/
+}
 
-# # ==============================
-# # Download and Install AM Master
-# # ==============================
-# commands () {
-#   echo "Downloading and installing AM Master..."
-#   # download and open AM Master installer
-#   wget -P ~/Downloads https://software.vc.logitech.com/downloads/tune/LogiTuneInstaller.dmg
-#   open ~/Downloads/LogiTuneInstaller.dmg
-# }
-
-# prompt_and_run \
-#   "Do you want to download and install AM Master?" \
-#   commands
-
+prompt_and_run \
+  "Do you want to download and install AM Master?" \
+  commands
 
 # =============
 # Configure git
@@ -292,13 +282,11 @@ commands () {
   echo "Installing GitHub CLI..."
   brew install gh
   gh auth login
-  gh extension install github/gh-copilot --force
 }
 
 prompt_and_run \
   "Do you want to install GitHub CLI?" \
   commands
-
 
 # ===========================
 # Add symlink to iCloud Drive
@@ -312,7 +300,6 @@ prompt_and_run \
   "Do you want to add a symlink to iCloud Drive?" \
   commands
 
-
 # ===============================
 # Add symlink to iCloud Downloads
 # ===============================
@@ -325,7 +312,6 @@ prompt_and_run \
   "Do you want to add a symlink to iCloud Downloads?" \
   commands
 
-
 # ===========
 # Install FNM
 # ===========
@@ -337,7 +323,6 @@ commands () {
 prompt_and_run \
   "Do you want to install FNM?" \
   commands
-
 
 # ========================
 # Update and Configure FNM
@@ -356,7 +341,6 @@ prompt_and_run \
   "Do you want to update and configure FNM?" \
   commands
 
-
 # =============
 # Install MySQL
 # =============
@@ -367,7 +351,6 @@ commands () {
 prompt_and_run \
   "Do you want to install MySQL?" \
   commands
-
 
 # ==================
 # Install PostgreSQL
@@ -381,7 +364,6 @@ prompt_and_run \
   "Do you want to install PostgreSQL?" \
   commands
 
-
 # ===============
 # Install MongoDB
 # ===============
@@ -393,7 +375,6 @@ commands () {
 prompt_and_run \
   "Do you want to install MongoDB?" \
   commands
-
 
 # =============
 # Install Fonts
@@ -413,7 +394,6 @@ commands () {
 prompt_and_run \
   "Do you want to install fonts?" \
   commands
-
 
 # ===========
 # Set up Dock
@@ -454,7 +434,6 @@ prompt_and_run \
   "Do you want to set up Dock?" \
   commands
 
-
 # ===============
 # Configure macOS
 # ===============
@@ -487,7 +466,6 @@ prompt_and_run \
   "Do you want to configure macOS?" \
   commands
 
-
 # ========
 # Menu Bar
 # ========
@@ -510,27 +488,7 @@ prompt_and_run \
 # Control Center
 # Clock
 
-
 # ===
 # Fin
 # ===
 echo "*Fin*"
-
-
-# Todo: Add something to set up and source .zshrc.
-# # fnm
-# export PATH="/Users/christian/Library/Application Support/fnm:$PATH"
-# eval "`fnm env`"
-
-# # conda
-# export PATH="/opt/homebrew/anaconda3/bin:$PATH"
-
-# Todo: Install Add to Dock... web apps:
-# Amazon
-# Disney+
-# ChatGPT
-# GitHub
-# Hulu
-# NBA
-# Netflix
-
