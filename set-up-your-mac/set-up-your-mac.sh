@@ -219,6 +219,7 @@ commands () {
     transmission \
     unity-hub \
     via \
+    vial \
     visual-studio \
     visual-studio-code \
     warp \
