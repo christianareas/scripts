@@ -333,8 +333,8 @@ commands () {
   source ~/.zshrc
   fnm install 18
   fnm install 20
-  fnm install 21
-  fnm default 21
+  fnm install 22
+  fnm default 22
   fnm ls
 }
 
