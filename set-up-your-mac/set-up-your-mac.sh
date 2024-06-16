@@ -225,6 +225,7 @@ commands () {
     warp \
     webex \
     whisky \
+    xcodes \
     zoom
 }
 
