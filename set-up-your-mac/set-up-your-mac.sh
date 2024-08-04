@@ -192,6 +192,7 @@ commands () {
     balenaetcher \
     beeper \
     brave-browser \
+    chatgpt \
     discord \
     docker \
     elgato-control-center \
