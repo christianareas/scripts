@@ -191,9 +191,6 @@ commands () {
     logi-options-plus \
     microsoft-edge \
     microsoft-teams \
-    mongodb-compass \
-    notion \
-    obsidian \
     ollama \
     postman \
     qmk-toolbox \
