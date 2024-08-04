@@ -232,11 +232,11 @@ prompt_and_run \
   commands
 
 # ==============================
-# Download and Install AM Master
+# Download AM Master
 # ==============================
 commands () {
-  echo "Downloading and installing AM Master..."
-  # download and open AM Master installer
+  echo "Downloading AM Master..."
+  # download AM Master installer
   open https://www.angrymiao.com/en/am-master/
 }
 
@@ -348,10 +348,6 @@ commands () {
 
 prompt_and_run \
   "Do you want to install PostgreSQL?" \
-  commands
-
-prompt_and_run \
-  "Do you want to install MongoDB?" \
   commands
 
 # =============
