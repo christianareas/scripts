@@ -86,20 +86,6 @@ prompt_and_run \
   "Do you want to install Homebrew?" \
   commands
 
-# ====================
-# Update Homebrew Taps
-# ====================
-commands () {
-  echo "Updating Homebrew taps..."
-  brew tap homebrew/cask-versions
-  brew tap homebrew/cask-fonts
-  brew tap mongodb/brew
-}
-
-prompt_and_run \
-  "Do you want to update Homebrew taps?" \
-  commands
-
 # =====================
 # Install App Store CLI
 # =====================
@@ -366,14 +352,6 @@ commands () {
 prompt_and_run \
   "Do you want to install PostgreSQL?" \
   commands
-
-# ===============
-# Install MongoDB
-# ===============
-commands () {
-  brew install mongodb-community
-  brew services start mongodb-community
-}
 
 prompt_and_run \
   "Do you want to install MongoDB?" \
