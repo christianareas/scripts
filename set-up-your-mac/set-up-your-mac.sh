@@ -117,14 +117,13 @@ prompt_and_run \
 # 462054704   Microsoft Word
 # 409203825   Numbers
 # 490179405   Okta Verify
-# 1474884867  Orchid
 # 409201541   Pages
 # 967805235   Paste
 # 803453959   Slack
 # 1153157709  Speedtest
 # 1496833156  Swift Playgrounds
 # 1284863847  Unsplashed Wallpapers
-# 310633997  WhatsApp
+# 310633997   WhatsApp
 # 497799835   Xcode
 commands () {
   echo "Installing App Store apps..."
@@ -145,7 +144,6 @@ commands () {
     462054704 \
     409203825 \
     490179405 \
-    1474884867 \
     409201541 \
     967805235 \
     803453959 \
@@ -179,6 +177,7 @@ commands () {
     beeper \
     brave-browser \
     chatgpt \
+    cursor \
     discord \
     docker \
     elgato-control-center \
