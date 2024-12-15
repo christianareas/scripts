@@ -106,7 +106,6 @@ prompt_and_run \
 # 640199958   Apple Developer
 # 937984704   Amphetamine
 # 1055511498  Day One
-# 1482920575  DuckDuckGo Privacy Essentials
 # 424389933   Final Cut Pro
 # 682658836   GarageBand
 # 1460836908  GoPro Player + ReelSteady
@@ -133,7 +132,6 @@ commands () {
     640199958 \
     937984704 \
     1055511498 \
-    1482920575 \
     424389933 \
     682658836 \
     1460836908 \
@@ -150,7 +148,7 @@ commands () {
     1153157709 \
     1496833156 \
     1284863847 \
-    1147396723 \
+    310633997 \
     497799835
 }
 
