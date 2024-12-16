@@ -102,13 +102,11 @@ prompt_and_run \
 # Install App Store Apps
 # ======================
 # 1440147259  AdGuard for Safari
-# 545519333   Amazon Prime Video
 # 640199958   Apple Developer
 # 937984704   Amphetamine
 # 1055511498  Day One
 # 424389933   Final Cut Pro
 # 682658836   GarageBand
-# 1460836908  GoPro Player + ReelSteady
 # 775737590   iA Writer
 # 408981434   iMovie
 # 409183694   Keynote
@@ -118,23 +116,19 @@ prompt_and_run \
 # 490179405   Okta Verify
 # 409201541   Pages
 # 967805235   Paste
-# 803453959   Slack
 # 1153157709  Speedtest
 # 1496833156  Swift Playgrounds
 # 1284863847  Unsplashed Wallpapers
-# 310633997   WhatsApp
 # 497799835   Xcode
 commands () {
   echo "Installing App Store apps..."
   mas install \
     1440147259 \
-    545519333 \
     640199958 \
     937984704 \
     1055511498 \
     424389933 \
     682658836 \
-    1460836908 \
     775737590 \
     408981434 \
     409183694 \
@@ -144,11 +138,9 @@ commands () {
     490179405 \
     409201541 \
     967805235 \
-    803453959 \
     1153157709 \
     1496833156 \
     1284863847 \
-    310633997 \
     497799835
 }
 
@@ -195,6 +187,7 @@ commands () {
     rectangle \
     safari-technology-preview \
     scrivener \
+    slack \
     steam \
     tableplus \
     transmission \
@@ -205,6 +198,7 @@ commands () {
     visual-studio-code \
     warp \
     webex \
+    whatsapp \
     whisky \
     xcodes \
     zoom
@@ -301,9 +295,9 @@ prompt_and_run \
 commands () {
   echo "Updating and configuring FNM..."
   source ~/.zshrc
-  fnm install 18
   fnm install 20
   fnm install 22
+  fnm install 23
   fnm default 22
   fnm ls
 }
@@ -376,14 +370,13 @@ commands () {
   dockutil --add "/Applications/News.app" --no-restart
   dockutil --add "/Applications/Music.app" --no-restart
   dockutil --add "/Applications/iA Writer.app" --no-restart
-  dockutil --add "/Applications/Pages.app" --no-restart
   dockutil --add "/Applications/Scrivener.app" --no-restart
   dockutil --add "/Applications/System Settings.app" --no-restart
-  dockutil --add "~/Applications/ChatGPT.app" --no-restart
   dockutil --add "/Applications/Warp.app" --no-restart
   dockutil --add "/Applications/Visual Studio Code.app" --no-restart
   dockutil --add "/Applications/TablePlus.app" --no-restart
   dockutil --add "/Applications/Postman.app" --no-restart
+  dockutil --add "/Applications/ChatGPT.app" --no-restart
   dockutil --add "/Applications" --view grid --display stack --section others --no-restart
   dockutil --add "~/Downloads" --view grid --display stack --section others --no-restart
   killall Dock
@@ -402,13 +395,14 @@ commands () {
   defaults write com.apple.dock "autohide" -bool "true"
   defaults write com.apple.dock "autohide-delay" -float "0.25"
   defaults write com.apple.dock "autohide-time-modifier" -float "0.25"
+  defaults write com.apple.dock "magnification" -bool "true"
   defaults write com.apple.dock "largesize" -int "175"
   defaults write com.apple.dock "mineffect" -string "scale"
   defaults write com.apple.dock "tilesize" -int "64"
   # configure finder
   defaults write NSGlobalDomain "AppleShowAllExtensions" -bool "true"
   defaults write com.apple.finder "AppleShowAllFiles" -bool "true"
-  defaults write com.apple.finder "ShowStatusBar" -bool true
+  defaults write com.apple.finder "ShowStatusBar" -bool "true"
   # configure menu bar
   defaults write com.apple.menuextra.clock "FlashDateSeparators" -bool "true"
   defaults write com.apple.menuextra.clock "DateFormat" -string "\"h:mm:ss a\""
