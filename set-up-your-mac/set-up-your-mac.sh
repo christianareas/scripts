@@ -424,6 +424,7 @@ prompt_and_run \
 # Menu Bar
 # ========
 # Amphetamine (Coffee Carafe)
+# ChatGPT
 # Day One
 # Elgato Control Center
 # Elgato Stream Deck
@@ -438,6 +439,7 @@ prompt_and_run \
 # Battery (if applicable)
 # Focus
 # Fast User Switching (if applicable)
+# Spark
 # Fantastical
 # Control Center
 # Clock
