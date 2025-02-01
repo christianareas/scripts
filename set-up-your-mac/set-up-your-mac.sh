@@ -4,8 +4,8 @@
 # - reorganize installs by type (for example, install mysql and tableplus in one step).
 # - tell the user what things are about to get installed, and possibly give them a chance to select options.
 # - detect what’s already installed and skip those things.
-# - add Add to Dock... web apps: Amazon, Disney+, ChatGPT, GitHub, Hulu, NBA, Netflix.
-# - write in a different language, such as JavaScript, Rust, or Swift -- or all of the above!
+# - add Add to Dock... web apps. For example, GitHub.
+# - write in a different language, such as TypeScript, Rust, or Swift -- or all of the above!
 
 # reminder, to make this script executable:
 # chmod +x set-up-your-mac.sh
@@ -102,7 +102,6 @@ prompt_and_run \
 # Install App Store Apps
 # ======================
 # 1440147259  AdGuard for Safari
-# 545519333   Amazon Prime Video
 # 640199958   Apple Developer
 # 937984704   Amphetamine
 # 1055511498  Day One
@@ -129,7 +128,6 @@ commands () {
   echo "Installing App Store apps..."
   mas install \
     1440147259 \
-    545519333 \
     640199958 \
     937984704 \
     1055511498 \
@@ -172,9 +170,7 @@ commands () {
   brew install --cask \
     anaconda \
     appcleaner \
-    arc \
     balenaetcher \
-    beeper \
     brave-browser \
     chatgpt \
     cursor \
@@ -189,7 +185,6 @@ commands () {
     karabiner-elements \
     logi-options-plus \
     microsoft-edge \
-    microsoft-teams \
     ollama \
     postman \
     qmk-toolbox \
@@ -209,6 +204,7 @@ commands () {
     webex \
     whisky \
     xcodes \
+    zen-browser \
     zoom
 }
 
@@ -303,10 +299,10 @@ prompt_and_run \
 commands () {
   echo "Updating and configuring FNM..."
   source ~/.zshrc
-  fnm install 18
   fnm install 20
   fnm install 22
-  fnm default 22
+  fnm install 23
+  fnm default 23
   fnm ls
 }
 
@@ -343,13 +339,13 @@ prompt_and_run \
 commands () {
   echo "Installing fonts..."
   brew install --cask \
-    font-sf-pro \
+    font-ia-writer-mono \
+    font-ia-writer-quattro \
+    font-new-york \
+    font-sf-arabic \
     font-sf-compact \
     font-sf-mono \
-    font-sf-arabic \
-    font-new-york \
-    font-ia-writer-mono \
-    font-ia-writer-quattro
+    font-sf-pro
 }
 
 prompt_and_run \
@@ -372,8 +368,7 @@ commands () {
   dockutil --add "/Applications/Slack.app" --no-restart
   dockutil --add "/Applications/Safari.app" --no-restart
   dockutil --add "/Applications/Safari Technology Preview.app" --no-restart
-  dockutil --add "/Applications/Brave Browser.app" --no-restart
-  dockutil --add "/Applications/Arc.app" --no-restart
+  dockutil --add "/Applications/Zen Browser.app" --no-restart
   dockutil --add "/Applications/Podcasts.app" --no-restart
   dockutil --add "/Applications/News.app" --no-restart
   dockutil --add "/Applications/Music.app" --no-restart
@@ -381,11 +376,14 @@ commands () {
   dockutil --add "/Applications/Pages.app" --no-restart
   dockutil --add "/Applications/Scrivener.app" --no-restart
   dockutil --add "/Applications/System Settings.app" --no-restart
-  dockutil --add "~/Applications/ChatGPT.app" --no-restart
+  dockutil --add "/Applications/ChatGPT.app" --no-restart
   dockutil --add "/Applications/Warp.app" --no-restart
   dockutil --add "/Applications/Visual Studio Code.app" --no-restart
+  dockutil --add "/Applications/Cursor.app" --no-restart
   dockutil --add "/Applications/TablePlus.app" --no-restart
   dockutil --add "/Applications/Postman.app" --no-restart
+  dockutil --add "/Applications/GitHub Desktop.app" --no-restart
+  dockutil --add "~/Applications/GitHub.app" --no-restart
   dockutil --add "/Applications" --view grid --display stack --section others --no-restart
   dockutil --add "~/Downloads" --view grid --display stack --section others --no-restart
   killall Dock
