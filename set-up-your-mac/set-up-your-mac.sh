@@ -105,10 +105,8 @@ prompt_and_run \
 # 640199958   Apple Developer
 # 937984704   Amphetamine
 # 1055511498  Day One
-# 1482920575  DuckDuckGo Privacy Essentials
 # 424389933   Final Cut Pro
 # 682658836   GarageBand
-# 1460836908  GoPro Player + ReelSteady
 # 775737590   iA Writer
 # 408981434   iMovie
 # 409183694   Keynote
@@ -118,11 +116,9 @@ prompt_and_run \
 # 490179405   Okta Verify
 # 409201541   Pages
 # 967805235   Paste
-# 803453959   Slack
 # 1153157709  Speedtest
 # 1496833156  Swift Playgrounds
 # 1284863847  Unsplashed Wallpapers
-# 310633997   WhatsApp
 # 497799835   Xcode
 commands () {
   echo "Installing App Store apps..."
@@ -131,10 +127,8 @@ commands () {
     640199958 \
     937984704 \
     1055511498 \
-    1482920575 \
     424389933 \
     682658836 \
-    1460836908 \
     775737590 \
     408981434 \
     409183694 \
@@ -144,11 +138,9 @@ commands () {
     490179405 \
     409201541 \
     967805235 \
-    803453959 \
     1153157709 \
     1496833156 \
     1284863847 \
-    1147396723 \
     497799835
 }
 
@@ -192,6 +184,7 @@ commands () {
     rectangle \
     safari-technology-preview \
     scrivener \
+    slack \
     steam \
     tableplus \
     transmission \
@@ -202,6 +195,7 @@ commands () {
     visual-studio-code \
     warp \
     webex \
+    whatsapp \
     whisky \
     xcodes \
     zen-browser \
@@ -402,13 +396,14 @@ commands () {
   defaults write com.apple.dock "autohide" -bool "true"
   defaults write com.apple.dock "autohide-delay" -float "0.25"
   defaults write com.apple.dock "autohide-time-modifier" -float "0.25"
+  defaults write com.apple.dock "magnification" -bool "true"
   defaults write com.apple.dock "largesize" -int "175"
   defaults write com.apple.dock "mineffect" -string "scale"
   defaults write com.apple.dock "tilesize" -int "64"
   # configure finder
   defaults write NSGlobalDomain "AppleShowAllExtensions" -bool "true"
   defaults write com.apple.finder "AppleShowAllFiles" -bool "true"
-  defaults write com.apple.finder "ShowStatusBar" -bool true
+  defaults write com.apple.finder "ShowStatusBar" -bool "true"
   # configure menu bar
   defaults write com.apple.menuextra.clock "FlashDateSeparators" -bool "true"
   defaults write com.apple.menuextra.clock "DateFormat" -string "\"h:mm:ss a\""
