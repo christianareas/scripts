@@ -165,6 +165,7 @@ commands () {
     balenaetcher \
     brave-browser \
     chatgpt \
+    claude \
     cursor \
     discord \
     docker \
@@ -362,7 +363,7 @@ commands () {
   dockutil --add "/Applications/Slack.app" --no-restart
   dockutil --add "/Applications/Safari.app" --no-restart
   dockutil --add "/Applications/Safari Technology Preview.app" --no-restart
-  dockutil --add "/Applications/Zen Browser.app" --no-restart
+  dockutil --add "/Applications/Zen.app" --no-restart
   dockutil --add "/Applications/Podcasts.app" --no-restart
   dockutil --add "/Applications/News.app" --no-restart
   dockutil --add "/Applications/Music.app" --no-restart
@@ -371,6 +372,7 @@ commands () {
   dockutil --add "/Applications/Scrivener.app" --no-restart
   dockutil --add "/Applications/System Settings.app" --no-restart
   dockutil --add "/Applications/ChatGPT.app" --no-restart
+  dockutil --add "/Applications/Claude.app" --no-restart
   dockutil --add "/Applications/Warp.app" --no-restart
   dockutil --add "/Applications/Visual Studio Code.app" --no-restart
   dockutil --add "/Applications/Cursor.app" --no-restart
@@ -442,6 +444,7 @@ prompt_and_run \
 # Spark
 # Fantastical
 # Control Center
+# Apple Intelligence
 # Clock
 
 # ===
