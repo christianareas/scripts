@@ -380,6 +380,7 @@ commands () {
   dockutil --add "/Applications/Postman.app" --no-restart
   dockutil --add "/Applications/GitHub Desktop.app" --no-restart
   dockutil --add "~/Applications/GitHub.app" --no-restart
+  dockutil --add "~/Applications/Vercel Dashboard.app" --no-restart
   dockutil --add "/Applications" --view grid --display stack --section others --no-restart
   dockutil --add "~/Downloads" --view grid --display stack --section others --no-restart
   killall Dock
