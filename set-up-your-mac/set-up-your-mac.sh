@@ -13,9 +13,8 @@
 # ===============
 # Prompt Function
 # ===============
-prompt_and_run () {
-  while :
-  do
+prompt_and_run() {
+  while :; do
     # prompt
     echo "$1"
     echo -n "y/n(skip): "
@@ -24,18 +23,18 @@ prompt_and_run () {
     # use the answer to run the commands or skip
     shopt -s nocasematch
     case $answer in
-      "y" | "yes" )
-        shopt -u nocasematch
-        $2
-        break
-        ;;
-      "n" | "no" | "s" | "skip")
-        shopt -u nocasematch
-        break
-        ;;
-      *)
-        echo "Sorry, I didn’t catch that."
-        ;;
+    "y" | "yes")
+      shopt -u nocasematch
+      $2
+      break
+      ;;
+    "n" | "no" | "s" | "skip")
+      shopt -u nocasematch
+      break
+      ;;
+    *)
+      echo "Sorry, I didn’t catch that."
+      ;;
     esac
   done
 }
@@ -43,7 +42,7 @@ prompt_and_run () {
 # ====================================
 # Install Command Line Tools for Xcode
 # ====================================
-commands () {
+commands() {
   echo "Installing Command Line Tools for Xcode..."
   xcode-select --install
   sudo xcodebuild -license accept
@@ -56,7 +55,7 @@ prompt_and_run \
 # ===============
 # Install Rosetta
 # ===============
-commands () {
+commands() {
   echo "Installing Rosetta..."
   sudo softwareupdate --install-rosetta
 }
@@ -68,16 +67,22 @@ prompt_and_run \
 # ================
 # Install Homebrew
 # ================
-commands () {
+commands() {
   echo "Installing Homebrew..."
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   # configure apple silicon mac
   if [[ "$(uname -m)" == "arm64" ]]; then
-    (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> ~/.zprofile
+    (
+      echo
+      echo 'eval "$(/opt/homebrew/bin/brew shellenv)"'
+    ) >>~/.zprofile
     eval "$(/opt/homebrew/bin/brew shellenv)"
   # configure intel mac
   else
-    (echo; echo 'eval "$(/usr/local/bin/brew shellenv)"') >> ~/.zprofile
+    (
+      echo
+      echo 'eval "$(/usr/local/bin/brew shellenv)"'
+    ) >>~/.zprofile
     eval "$(/usr/local/bin/brew shellenv)"
   fi
 }
@@ -89,7 +94,7 @@ prompt_and_run \
 # =====================
 # Install App Store CLI
 # =====================
-commands () {
+commands() {
   echo "Installing the App Store CLI..."
   brew install mas
 }
@@ -120,7 +125,7 @@ prompt_and_run \
 # 1496833156  Swift Playgrounds
 # 1284863847  Unsplashed Wallpapers
 # 497799835   Xcode
-commands () {
+commands() {
   echo "Installing App Store apps..."
   mas install \
     1440147259 \
@@ -151,13 +156,14 @@ prompt_and_run \
 # ==================================
 # Install Homebrew CLI and Cask Apps
 # ==================================
-commands () {
+commands() {
   echo "Installing Homebrew CLI and cask apps..."
   brew install \
     dockutil \
     helix \
     kind \
     kubectl \
+    shfmt \
     wget
   brew install --cask \
     anaconda \
@@ -210,7 +216,7 @@ prompt_and_run \
 # ==============================
 # Download and Install Logi Tune
 # ==============================
-commands () {
+commands() {
   echo "Downloading and installing Logi Tune..."
   # download and open Logi Tune installer
   wget -P ~/Downloads https://software.vc.logitech.com/downloads/tune/LogiTuneInstaller.dmg
@@ -224,7 +230,7 @@ prompt_and_run \
 # ==============================
 # Download AM Master
 # ==============================
-commands () {
+commands() {
   echo "Downloading AM Master..."
   # download AM Master installer
   open https://www.angrymiao.com/en/am-master/
@@ -237,7 +243,7 @@ prompt_and_run \
 # =============
 # Configure git
 # =============
-commands () {
+commands() {
   echo "Configuring git..."
   # configure the default branch name
   git config --global init.defaultBranch main
@@ -254,7 +260,7 @@ prompt_and_run \
 # ==================
 # Install GitHub CLI
 # ==================
-commands () {
+commands() {
   echo "Installing GitHub CLI..."
   brew install gh
   gh auth login
@@ -267,7 +273,7 @@ prompt_and_run \
 # ===============================
 # Add symlink to iCloud Downloads
 # ===============================
-commands () {
+commands() {
   echo "Adding symlink to iCloud Downloads..."
   ln -s ~/Library/Mobile\ Documents/com~apple~CloudDocs/Downloads ~/Downloads/iCloud\ Downloads
 }
@@ -279,7 +285,7 @@ prompt_and_run \
 # ===========
 # Install FNM
 # ===========
-commands () {
+commands() {
   echo "Installing FNM..."
   curl -fsSL https://fnm.vercel.app/install | bash
 }
@@ -291,7 +297,7 @@ prompt_and_run \
 # ========================
 # Update and Configure FNM
 # ========================
-commands () {
+commands() {
   echo "Updating and configuring FNM..."
   source ~/.zshrc
   fnm install 20
@@ -308,7 +314,7 @@ prompt_and_run \
 # =============
 # Install MySQL
 # =============
-commands () {
+commands() {
   brew install mysql
 }
 
@@ -319,7 +325,7 @@ prompt_and_run \
 # ==================
 # Install PostgreSQL
 # ==================
-commands () {
+commands() {
   brew install postgresql@15
   brew services start postgresql@15
 }
@@ -331,7 +337,7 @@ prompt_and_run \
 # =============
 # Install Fonts
 # =============
-commands () {
+commands() {
   echo "Installing fonts..."
   brew install --cask \
     font-ia-writer-mono \
@@ -350,7 +356,7 @@ prompt_and_run \
 # ===========
 # Set up Dock
 # ===========
-commands () {
+commands() {
   echo "Setting up Dock..."
   dockutil --remove all --no-restart
   dockutil --add "/Applications/Messages.app" --no-restart
@@ -393,7 +399,7 @@ prompt_and_run \
 # ===============
 # Configure macOS
 # ===============
-commands () {
+commands() {
   echo "Configuring macOS..."
   # configure dock
   defaults write com.apple.dock "autohide" -bool "true"
