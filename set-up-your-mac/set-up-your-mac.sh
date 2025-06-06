@@ -166,6 +166,7 @@ commands() {
     shfmt \
     wget
   brew install --cask \
+    1password \
     anaconda \
     appcleaner \
     balenaetcher \
