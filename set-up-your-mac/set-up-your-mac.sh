@@ -202,6 +202,7 @@ commands() {
     visual-studio \
     visual-studio-code \
     warp \
+    warp@preview \
     webex \
     whatsapp \
     whisky \
@@ -301,10 +302,10 @@ prompt_and_run \
 commands() {
   echo "Updating and configuring FNM..."
   source ~/.zshrc
-  fnm install 20
   fnm install 22
   fnm install 23
-  fnm default 23
+  fnm install 24
+  fnm default 24
   fnm ls
 }
 
@@ -381,13 +382,15 @@ commands() {
   dockutil --add "/Applications/ChatGPT.app" --no-restart
   dockutil --add "/Applications/Claude.app" --no-restart
   dockutil --add "/Applications/Warp.app" --no-restart
+  dockutil --add "/Applications/WarpPreview.app" --no-restart
+  dockutil --add "/Applications/GitHub Desktop.app" --no-restart
+  dockutil --add "~/Applications/GitHub.app" --no-restart
   dockutil --add "/Applications/Visual Studio Code.app" --no-restart
   dockutil --add "/Applications/Cursor.app" --no-restart
   dockutil --add "/Applications/TablePlus.app" --no-restart
   dockutil --add "/Applications/Postman.app" --no-restart
-  dockutil --add "/Applications/GitHub Desktop.app" --no-restart
-  dockutil --add "~/Applications/GitHub.app" --no-restart
   dockutil --add "~/Applications/Vercel Dashboard.app" --no-restart
+  dockutil --add "~/Applications/Stripe Dashboard.app" --no-restart
   dockutil --add "/Applications" --view grid --display stack --section others --no-restart
   dockutil --add "~/Downloads" --view grid --display stack --section others --no-restart
   killall Dock
@@ -434,7 +437,6 @@ prompt_and_run \
 # Menu Bar
 # ========
 # Amphetamine (Coffee Carafe)
-# ChatGPT
 # Day One
 # Elgato Control Center
 # Elgato Stream Deck
@@ -452,7 +454,6 @@ prompt_and_run \
 # Spark
 # Fantastical
 # Control Center
-# Apple Intelligence
 # Clock
 
 # ===
