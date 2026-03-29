@@ -154,25 +154,73 @@ prompt_and_run \
   "Do you want to install AI browsers?" \
   install_ai_browsers
 
+# --------------------------------------------------------------------------------
+# Writing.
+# --------------------------------------------------------------------------------
+
+# Install writing apps.
+install_writing_apps() {
+  echo "Installing writing apps..."
+  # 1055511498  Day One
+  # 775737590   iA Writer
+  mas install \
+    1055511498 \
+    775737590
+  brew install --cask \
+    notion \
+    obsidian \
+    scrivener
+}
+
+prompt_and_run \
+  "Do you want to install writing apps?" \
+  install_writing_apps
+
+# --------------------------------------------------------------------------------
+# Productivity and utilities.
+# --------------------------------------------------------------------------------
+
+# Install productivity and utility apps.
+install_productivity_utility_apps() {
+  echo "Installing productivity apps..."
+  # 937984704   Amphetamine
+  # 409183694   Keynote
+  # 462058435   Microsoft Excel
+  # 462054704   Microsoft Word
+  # 409203825   Numbers
+  # 409201541   Pages
+  # 967805235   Paste
+  # 1153157709  Speedtest
+  mas install \
+    937984704 \
+    409183694 \
+    462058435 \
+    462054704 \
+    409203825 \
+    409201541 \
+    967805235 \
+    1153157709
+  brew install --cask \
+    1password \
+    appcleaner \
+    google-drive \
+    protonvpn \
+    rectangle
+}
+
+prompt_and_run \
+  "Do you want to install productivity apps?" \
+  install_productivity_utility_apps
+
 # ======================
 # Install App Store Apps
 # ======================
 
 # 640199958   Apple Developer
-# 937984704   Amphetamine
-# 1055511498  Day One
 # 424389933   Final Cut Pro
 # 682658836   GarageBand
-# 775737590   iA Writer
 # 408981434   iMovie
-# 409183694   Keynote
-# 462058435   Microsoft Excel
-# 462054704   Microsoft Word
-# 409203825   Numbers
 # 490179405   Okta Verify
-# 409201541   Pages
-# 967805235   Paste
-# 1153157709  Speedtest
 # 1496833156  Swift Playgrounds
 # 1284863847  Unsplashed Wallpapers
 # 497799835   Xcode
@@ -181,20 +229,10 @@ install_app_store_apps() {
   mas install \
     1440147259 \
     640199958 \
-    937984704 \
-    1055511498 \
     424389933 \
     682658836 \
-    775737590 \
     408981434 \
-    409183694 \
-    462058435 \
-    462054704 \
-    409203825 \
     490179405 \
-    409201541 \
-    967805235 \
-    1153157709 \
     1496833156 \
     1284863847 \
     497799835
@@ -220,8 +258,6 @@ install_homebrew_apps() {
     vercel-cli \
     wget
   brew install --cask \
-    1password \
-    appcleaner \
     balenaetcher \
     chatgpt \
     claude \
@@ -233,18 +269,12 @@ install_homebrew_apps() {
     elgato-stream-deck \
     figma \
     github \
-    google-drive \
     karabiner-elements \
     logi-options-plus \
-    notion \
-    obsidian \
     ollama \
     postman \
     postman-cli \
-    protonvpn \
     qmk-toolbox \
-    rectangle \
-    scrivener \
     slack-cli \
     steam \
     tableplus \
@@ -397,12 +427,10 @@ setup_dock() {
   dockutil --add "/Applications/Slack.app" --no-restart
   dockutil --add "/Applications/Safari.app" --no-restart
   dockutil --add "/Applications/Safari Technology Preview.app" --no-restart
-  dockutil --add "/Applications/Zen.app" --no-restart
   dockutil --add "/Applications/Podcasts.app" --no-restart
   dockutil --add "/Applications/News.app" --no-restart
   dockutil --add "/Applications/Music.app" --no-restart
   dockutil --add "/Applications/iA Writer.app" --no-restart
-  dockutil --add "/Applications/Pages.app" --no-restart
   dockutil --add "/Applications/Scrivener.app" --no-restart
   dockutil --add "/Applications/System Settings.app" --no-restart
   dockutil --add "/Applications/ChatGPT.app" --no-restart
