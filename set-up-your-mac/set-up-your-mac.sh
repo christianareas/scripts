@@ -23,6 +23,7 @@ set -euo pipefail
 # --------------------------------------------------------------------------------
 prompt_and_run() {
   while :; do
+    echo
     # Prompt.
     echo "$1"
     echo -n "y/n(skip): "
@@ -106,6 +107,16 @@ install_app_store_cli() {
 prompt_and_run \
   "Do you want to install the App Store CLI?" \
   install_app_store_cli
+
+# Install dockutil.
+install_dockutil() {
+  echo "Installing dockutil..."
+  brew install dockutil
+}
+
+prompt_and_run \
+  "Do you want to install dockutil?" \
+  install_dockutil
 
 # --------------------------------------------------------------------------------
 # Communications.
@@ -317,7 +328,6 @@ prompt_and_run \
 install_cli_tools() {
   echo "Installing CLI tools..."
   brew install \
-    dockutil \
     imagemagick \
     kind \
     kubectl \
@@ -497,7 +507,6 @@ setup_dock() {
   dockutil --add "/Applications/iA Writer.app" --no-restart
   dockutil --add "/Applications/Scrivener.app" --no-restart
   dockutil --add "/Applications/System Settings.app" --no-restart
-  dockutil --add "/Applications/ChatGPT.app" --no-restart
   dockutil --add "/Applications/Claude.app" --no-restart
   dockutil --add "/Applications/Warp.app" --no-restart
   dockutil --add "/Applications/WarpPreview.app" --no-restart
@@ -506,9 +515,15 @@ setup_dock() {
   dockutil --add "/Applications/Visual Studio Code.app" --no-restart
   dockutil --add "/Applications/Cursor.app" --no-restart
   dockutil --add "/Applications/TablePlus.app" --no-restart
+  dockutil --add "$HOME/Applications/Drizzle Studio.app" --no-restart
   dockutil --add "/Applications/Postman.app" --no-restart
   dockutil --add "$HOME/Applications/Vercel Dashboard.app" --no-restart
+  dockutil --add "$HOME/Applications/Neon Console.app" --no-restart
   dockutil --add "$HOME/Applications/Stripe Dashboard.app" --no-restart
+  dockutil --add "$HOME/Applications/areas.me.app" --no-restart
+  dockutil --add "$HOME/Applications/areas.me | Local.app" --no-restart
+  dockutil --add "$HOME/Applications/CIMI.app" --no-restart
+  dockutil --add "$HOME/Applications/CounterLedger.app" --no-restart
   dockutil --add "/Applications" --view grid --display stack --section others --no-restart
   dockutil --add "$HOME/Downloads" --view grid --display stack --section others --no-restart
   killall Dock
