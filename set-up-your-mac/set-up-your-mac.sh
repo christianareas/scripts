@@ -168,34 +168,44 @@ install_homebrew_apps() {
     kubectl \
     mkcert \
     shfmt \
+    uv \
     vercel-cli \
     wget
   brew install --cask \
     1password \
-    anaconda \
     appcleaner \
     balenaetcher \
     brave-browser \
+    chatgpt \
+    chatgpt-atlas \
     claude \
+    claude-code \
+    codex \
     cursor \
     discord \
     docker \
     elgato-control-center \
     elgato-stream-deck \
-    figma \
     fantastical \
+    figma \
     github \
     google-chrome \
+    google-drive \
     karabiner-elements \
     logi-options-plus \
+    notion \
+    obsidian \
     ollama \
     postman \
+    postman-cli \
+    protonvpn \
     qmk-toolbox \
     readdle-spark \
     rectangle \
     safari-technology-preview \
     scrivener \
     slack \
+    slack-cli \
     steam \
     tableplus \
     transmission \
@@ -210,6 +220,7 @@ install_homebrew_apps() {
     whatsapp \
     xcodes \
     zen-browser \
+    zen@twilight \
     zoom
 }
 
@@ -304,10 +315,9 @@ prompt_and_run \
 configure_fnm() {
   echo "Updating and configuring FNM..."
   source ~/.zshrc
-  fnm install 22
-  fnm install 23
   fnm install 24
-  fnm default 24
+  fnm install 25
+  fnm default 25
   fnm ls
 }
 
