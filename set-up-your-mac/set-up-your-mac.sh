@@ -13,9 +13,9 @@ set -euo pipefail
 # Reminder, to make this script executable:
 # chmod +x set-up-your-mac.sh
 
-# ===============
-# Prompt Function
-# ===============
+# --------------------------------------------------------------------------------
+# Prompt function.
+# --------------------------------------------------------------------------------
 prompt_and_run() {
   while :; do
     # Prompt.
@@ -102,6 +102,37 @@ prompt_and_run \
   "Do you want to install the App Store CLI?" \
   install_app_store_cli
 
+# --------------------------------------------------------------------------------
+# Install Browsers
+# --------------------------------------------------------------------------------
+
+# Install browsers.
+install_browsers() {
+  echo "Installing browsers..."
+  brew install --cask \
+    brave-browser \
+    google-chrome \
+    safari-technology-preview \
+    zen-browser \
+    zen@twilight
+}
+
+prompt_and_run \
+  "Do you want to install browsers?" \
+  install_browsers
+
+# Install AI browsers.
+install_ai_browsers() {
+  echo "Installing AI browsers..."
+  brew install --cask \
+    chatgpt-atlas \
+    comet
+}
+
+prompt_and_run \
+  "Do you want to install AI browsers?" \
+  install_ai_browsers
+
 # ======================
 # Install App Store Apps
 # ======================
@@ -171,9 +202,7 @@ install_homebrew_apps() {
     1password \
     appcleaner \
     balenaetcher \
-    brave-browser \
     chatgpt \
-    chatgpt-atlas \
     claude \
     claude-code \
     codex \
@@ -185,7 +214,6 @@ install_homebrew_apps() {
     fantastical \
     figma \
     github \
-    google-chrome \
     google-drive \
     karabiner-elements \
     logi-options-plus \
@@ -198,7 +226,6 @@ install_homebrew_apps() {
     qmk-toolbox \
     readdle-spark \
     rectangle \
-    safari-technology-preview \
     scrivener \
     slack \
     slack-cli \
@@ -215,8 +242,6 @@ install_homebrew_apps() {
     webex \
     whatsapp \
     xcodes \
-    zen-browser \
-    zen@twilight \
     zoom
 }
 
