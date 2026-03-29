@@ -42,22 +42,22 @@ prompt_and_run() {
   done
 }
 
-# ====================================
-# Install Command Line Tools for Xcode
-# ====================================
+# --------------------------------------------------------------------------------
+# Prerequisites.
+# --------------------------------------------------------------------------------
+
+# Install Xcode Command Line Tools.
 install_xcode_cli_tools() {
-  echo "Installing Command Line Tools for Xcode..."
+  echo "Installing Xcode Command Line Tools..."
   xcode-select --install
   sudo xcodebuild -license accept
 }
 
 prompt_and_run \
-  "Do you want to install Command Line Tools for Xcode?" \
+  "Do you want to install Xcode Command Line Tools?" \
   install_xcode_cli_tools
 
-# ===============
-# Install Rosetta
-# ===============
+# Install Rosetta.
 install_rosetta() {
   echo "Installing Rosetta..."
   sudo softwareupdate --install-rosetta
@@ -67,20 +67,18 @@ prompt_and_run \
   "Do you want to install Rosetta?" \
   install_rosetta
 
-# ================
-# Install Homebrew
-# ================
+# Install Homebrew.
 install_homebrew() {
   echo "Installing Homebrew..."
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  # configure apple silicon mac
+  # Configure Apple Silicon Mac.
   if [[ "$(uname -m)" == "arm64" ]]; then
     (
       echo
       echo 'eval "$(/opt/homebrew/bin/brew shellenv)"'
     ) >>~/.zprofile
     eval "$(/opt/homebrew/bin/brew shellenv)"
-  # configure intel mac
+  # Configure Intel Mac.
   else
     (
       echo
@@ -94,9 +92,7 @@ prompt_and_run \
   "Do you want to install Homebrew?" \
   install_homebrew
 
-# =====================
-# Install App Store CLI
-# =====================
+# Install App Store CLI.
 install_app_store_cli() {
   echo "Installing the App Store CLI..."
   brew install mas
@@ -109,7 +105,7 @@ prompt_and_run \
 # ======================
 # Install App Store Apps
 # ======================
-# 1440147259  AdGuard for Safari
+
 # 640199958   Apple Developer
 # 937984704   Amphetamine
 # 1055511498  Day One
@@ -331,6 +327,8 @@ prompt_and_run \
 install_fonts() {
   echo "Installing fonts..."
   brew install --cask \
+    font-ia-writer-duo \
+    font-ia-writer-duospace \
     font-ia-writer-mono \
     font-ia-writer-quattro \
     font-new-york \
