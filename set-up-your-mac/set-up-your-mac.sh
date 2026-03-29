@@ -436,7 +436,7 @@ prompt_and_run \
 # Configure FNM.
 configure_fnm() {
   echo "Updating and configuring FNM..."
-  source ~/.zshrc
+  eval "$(fnm env)"
   fnm install 24
   fnm install 25
   fnm default 25
@@ -469,7 +469,6 @@ install_fonts() {
   echo "Installing fonts..."
   brew install --cask \
     font-ia-writer-duo \
-    font-ia-writer-duospace \
     font-ia-writer-mono \
     font-ia-writer-quattro \
     font-new-york \
@@ -512,7 +511,6 @@ setup_dock() {
   dockutil --add "/Applications/WarpPreview.app" --no-restart
   dockutil --add "/Applications/GitHub Desktop.app" --no-restart
   dockutil --add "$HOME/Applications/GitHub.app" --no-restart
-  dockutil --add "/Applications/Visual Studio Code.app" --no-restart
   dockutil --add "/Applications/Cursor.app" --no-restart
   dockutil --add "/Applications/TablePlus.app" --no-restart
   dockutil --add "$HOME/Applications/Drizzle Studio.app" --no-restart
@@ -595,6 +593,7 @@ prompt_and_run \
 # Fin.
 # --------------------------------------------------------------------------------
 
+echo
 echo "*Fin*"
 
 # --------------------------------------------------------------------------------
