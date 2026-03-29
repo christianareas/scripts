@@ -130,11 +130,14 @@ prompt_and_run \
 # Install browsers.
 install_browsers() {
   echo "Installing browsers..."
+  # 1440147259  AdGuard for Safari
+  mas install \
+    1440147259
   brew install --cask \
     brave-browser \
     google-chrome \
     safari-technology-preview \
-    zen-browser \
+    zen \
     zen@twilight
 }
 
@@ -177,12 +180,34 @@ prompt_and_run \
   install_writing_apps
 
 # --------------------------------------------------------------------------------
+# Creativity and entertainment.
+# --------------------------------------------------------------------------------
+
+# Install creativity and entertainment apps.
+install_creativity_entertainment_apps() {
+  echo "Installing creativity and entertainment apps..."
+  # 424389933   Final Cut Pro
+  # 682658836   GarageBand
+  # 408981434   iMovie
+  mas install \
+    424389933 \
+    682658836 \
+    408981434
+  brew install --cask \
+    steam
+}
+
+prompt_and_run \
+  "Do you want to install creativity and entertainment apps?" \
+  install_creativity_entertainment_apps
+
+# --------------------------------------------------------------------------------
 # Productivity and utilities.
 # --------------------------------------------------------------------------------
 
 # Install productivity and utility apps.
 install_productivity_utility_apps() {
-  echo "Installing productivity apps..."
+  echo "Installing productivity and utility apps..."
   # 937984704   Amphetamine
   # 409183694   Keynote
   # 462058435   Microsoft Excel
@@ -191,6 +216,8 @@ install_productivity_utility_apps() {
   # 409201541   Pages
   # 967805235   Paste
   # 1153157709  Speedtest
+  # 490179405   Okta Verify
+  # 1284863847  Unsplash Wallpapers
   mas install \
     937984704 \
     409183694 \
@@ -199,106 +226,135 @@ install_productivity_utility_apps() {
     409203825 \
     409201541 \
     967805235 \
-    1153157709
+    1153157709 \
+    490179405 \
+    1284863847
   brew install --cask \
     1password \
     appcleaner \
+    balenaetcher \
     google-drive \
     protonvpn \
-    rectangle
+    rectangle \
+    transmission
 }
 
 prompt_and_run \
-  "Do you want to install productivity apps?" \
+  "Do you want to install productivity and utility apps?" \
   install_productivity_utility_apps
 
-# ======================
-# Install App Store Apps
-# ======================
+# --------------------------------------------------------------------------------
+# AI tools.
+# --------------------------------------------------------------------------------
 
-# 640199958   Apple Developer
-# 424389933   Final Cut Pro
-# 682658836   GarageBand
-# 408981434   iMovie
-# 490179405   Okta Verify
-# 1496833156  Swift Playgrounds
-# 1284863847  Unsplashed Wallpapers
-# 497799835   Xcode
-install_app_store_apps() {
-  echo "Installing App Store apps..."
-  mas install \
-    1440147259 \
-    640199958 \
-    424389933 \
-    682658836 \
-    408981434 \
-    490179405 \
-    1496833156 \
-    1284863847 \
-    497799835
+# Install AI tools.
+install_ai_tools() {
+  echo "Installing AI tools..."
+  brew install --cask \
+    chatgpt \
+    claude \
+    codex-app \
+    ollama-app
 }
 
 prompt_and_run \
-  "Do you want to install App Store apps?" \
-  install_app_store_apps
+  "Do you want to install AI tools?" \
+  install_ai_tools
 
-# ==================================
-# Install Homebrew CLI and Cask Apps
-# ==================================
-install_homebrew_apps() {
-  echo "Installing Homebrew CLI and cask apps..."
+
+# Install AI CLI tools.
+install_ai_cli_tools() {
+  echo "Installing AI CLI tools..."
+  brew install --cask \
+    claude-code \
+    codex
+}
+
+prompt_and_run \
+  "Do you want to install AI CLI tools?" \
+  install_ai_cli_tools
+
+# --------------------------------------------------------------------------------
+# Developer tools.
+# --------------------------------------------------------------------------------
+
+# Install developer tools.
+install_developer_tools() {
+  echo "Installing developer tools..."
+  # 640199958   Apple Developer
+  # 1496833156  Swift Playgrounds
+  # 497799835   Xcode
+  mas install \
+    640199958 \
+    1496833156 \
+    497799835
+  brew install --cask \
+    cursor \
+    docker-desktop \
+    figma \
+    github \
+    postman \
+    tableplus \
+    unity-hub \
+    visual-studio \
+    visual-studio-code \
+    warp \
+    warp@preview \
+    xcodes-app
+}
+
+prompt_and_run \
+  "Do you want to install developer tools?" \
+  install_developer_tools
+
+
+# Install CLI tools.
+install_cli_tools() {
+  echo "Installing CLI tools..."
   brew install \
     dockutil \
     imagemagick \
     kind \
     kubectl \
     mkcert \
+    postman-cli \
     shfmt \
+    slack-cli \
     uv \
     vercel-cli \
-    wget
-  brew install --cask \
-    balenaetcher \
-    chatgpt \
-    claude \
-    claude-code \
-    codex \
-    cursor \
-    docker \
-    elgato-control-center \
-    elgato-stream-deck \
-    figma \
-    github \
-    karabiner-elements \
-    logi-options-plus \
-    ollama \
-    postman \
-    postman-cli \
-    qmk-toolbox \
-    slack-cli \
-    steam \
-    tableplus \
-    transmission \
-    unity-hub \
-    via \
-    vial \
-    visual-studio \
-    visual-studio-code \
-    warp \
-    warp@preview \
+    wget \
     xcodes
 }
 
 prompt_and_run \
-  "Do you want to install Homebrew CLI and cask apps?" \
-  install_homebrew_apps
+  "Do you want to install CLI tools?" \
+  install_cli_tools
 
-# ==============================
-# Download and Install Logi Tune
-# ==============================
+# --------------------------------------------------------------------------------
+# Peripherals.
+# --------------------------------------------------------------------------------
+
+# Install peripheral apps.
+install_peripheral_apps() {
+  echo "Installing peripheral apps..."
+  brew install --cask \
+    elgato-control-center \
+    elgato-stream-deck \
+    karabiner-elements \
+    logi-options-plus \
+    qmk-toolbox \
+    via \
+    vial
+}
+
+prompt_and_run \
+  "Do you want to install peripheral apps?" \
+  install_peripheral_apps
+
+# Download and install Logi Tune.
 install_logi_tune() {
   echo "Downloading and installing Logi Tune..."
-  # download and open Logi Tune installer
+  # Download and open Logi Tune installer.
   wget -P ~/Downloads https://software.vc.logitech.com/downloads/tune/LogiTuneInstaller.dmg
   open ~/Downloads/LogiTuneInstaller.dmg
 }
@@ -307,12 +363,10 @@ prompt_and_run \
   "Do you want to download and install Logi Tune?" \
   install_logi_tune
 
-# ==============================
-# Download AM Master
-# ==============================
+# Download AM Master.
 download_am_master() {
   echo "Downloading AM Master..."
-  # download AM Master installer
+  # Download AM Master installer.
   open https://www.angrymiao.com/en/am-master/
 }
 
