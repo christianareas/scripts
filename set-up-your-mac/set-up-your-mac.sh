@@ -4,7 +4,7 @@
 set -euo pipefail
 
 # Todo:
-# - reorganize installs by type (for example, install mysql and tableplus in one step).
+# - reorganize installs by type (for example, install mysql and TablePlus in one step).
 # - tell the user what things are about to get installed, and possibly give them a chance to select options.
 # - detect what’s already installed and skip those things.
 # - add Add to Dock... web apps. For example, GitHub.
@@ -27,25 +27,25 @@ prompt_and_run() {
     shopt -s nocasematch
     case $answer in
     "y" | "yes")
-      shopt -u nocasematch
-      $2
+      "$2"
       break
       ;;
     "n" | "no" | "s" | "skip")
-      shopt -u nocasematch
       break
       ;;
     *)
       echo "Sorry, I didn’t catch that."
+      continue
       ;;
     esac
+    shopt -u nocasematch
   done
 }
 
 # ====================================
 # Install Command Line Tools for Xcode
 # ====================================
-commands() {
+install_xcode_cli_tools() {
   echo "Installing Command Line Tools for Xcode..."
   xcode-select --install
   sudo xcodebuild -license accept
@@ -53,24 +53,24 @@ commands() {
 
 prompt_and_run \
   "Do you want to install Command Line Tools for Xcode?" \
-  commands
+  install_xcode_cli_tools
 
 # ===============
 # Install Rosetta
 # ===============
-commands() {
+install_rosetta() {
   echo "Installing Rosetta..."
   sudo softwareupdate --install-rosetta
 }
 
 prompt_and_run \
   "Do you want to install Rosetta?" \
-  commands
+  install_rosetta
 
 # ================
 # Install Homebrew
 # ================
-commands() {
+install_homebrew() {
   echo "Installing Homebrew..."
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   # configure apple silicon mac
@@ -92,19 +92,19 @@ commands() {
 
 prompt_and_run \
   "Do you want to install Homebrew?" \
-  commands
+  install_homebrew
 
 # =====================
 # Install App Store CLI
 # =====================
-commands() {
+install_app_store_cli() {
   echo "Installing the App Store CLI..."
   brew install mas
 }
 
 prompt_and_run \
   "Do you want to install the App Store CLI?" \
-  commands
+  install_app_store_cli
 
 # ======================
 # Install App Store Apps
@@ -128,7 +128,7 @@ prompt_and_run \
 # 1496833156  Swift Playgrounds
 # 1284863847  Unsplashed Wallpapers
 # 497799835   Xcode
-commands() {
+install_app_store_apps() {
   echo "Installing App Store apps..."
   mas install \
     1440147259 \
@@ -154,12 +154,12 @@ commands() {
 
 prompt_and_run \
   "Do you want to install App Store apps?" \
-  commands
+  install_app_store_apps
 
 # ==================================
 # Install Homebrew CLI and Cask Apps
 # ==================================
-commands() {
+install_homebrew_apps() {
   echo "Installing Homebrew CLI and cask apps..."
   brew install \
     dockutil \
@@ -216,12 +216,12 @@ commands() {
 
 prompt_and_run \
   "Do you want to install Homebrew CLI and cask apps?" \
-  commands
+  install_homebrew_apps
 
 # ==============================
 # Download and Install Logi Tune
 # ==============================
-commands() {
+install_logi_tune() {
   echo "Downloading and installing Logi Tune..."
   # download and open Logi Tune installer
   wget -P ~/Downloads https://software.vc.logitech.com/downloads/tune/LogiTuneInstaller.dmg
@@ -230,12 +230,12 @@ commands() {
 
 prompt_and_run \
   "Do you want to download and install Logi Tune?" \
-  commands
+  install_logi_tune
 
 # ==============================
 # Download AM Master
 # ==============================
-commands() {
+download_am_master() {
   echo "Downloading AM Master..."
   # download AM Master installer
   open https://www.angrymiao.com/en/am-master/
@@ -243,12 +243,12 @@ commands() {
 
 prompt_and_run \
   "Do you want to download and install AM Master?" \
-  commands
+  download_am_master
 
 # =============
 # Configure git
 # =============
-commands() {
+configure_git() {
   echo "Configuring git..."
   # configure the default branch name
   git config --global init.defaultBranch main
@@ -260,12 +260,12 @@ commands() {
 
 prompt_and_run \
   "Do you want to configure git?" \
-  commands
+  configure_git
 
 # ==================
 # Install GitHub CLI
 # ==================
-commands() {
+install_github_cli() {
   echo "Installing GitHub CLI..."
   brew install gh
   gh auth login
@@ -273,36 +273,36 @@ commands() {
 
 prompt_and_run \
   "Do you want to install GitHub CLI?" \
-  commands
+  install_github_cli
 
 # ===============================
 # Add symlink to iCloud Downloads
 # ===============================
-commands() {
+add_icloud_downloads_symlink() {
   echo "Adding symlink to iCloud Downloads..."
   ln -s ~/Library/Mobile\ Documents/com~apple~CloudDocs/Downloads ~/Downloads/iCloud\ Downloads
 }
 
 prompt_and_run \
   "Do you want to add a symlink to iCloud Downloads?" \
-  commands
+  add_icloud_downloads_symlink
 
 # ===========
 # Install FNM
 # ===========
-commands() {
+install_fnm() {
   echo "Installing FNM..."
   curl -fsSL https://fnm.vercel.app/install | bash
 }
 
 prompt_and_run \
   "Do you want to install FNM?" \
-  commands
+  install_fnm
 
 # ========================
 # Update and Configure FNM
 # ========================
-commands() {
+configure_fnm() {
   echo "Updating and configuring FNM..."
   source ~/.zshrc
   fnm install 22
@@ -314,35 +314,12 @@ commands() {
 
 prompt_and_run \
   "Do you want to update and configure FNM?" \
-  commands
-
-# =============
-# Install MySQL
-# =============
-commands() {
-  brew install mysql
-}
-
-prompt_and_run \
-  "Do you want to install MySQL?" \
-  commands
-
-# ==================
-# Install PostgreSQL
-# ==================
-commands() {
-  brew install postgresql@15
-  brew services start postgresql@15
-}
-
-prompt_and_run \
-  "Do you want to install PostgreSQL?" \
-  commands
+  configure_fnm
 
 # =============
 # Install Fonts
 # =============
-commands() {
+install_fonts() {
   echo "Installing fonts..."
   brew install --cask \
     font-ia-writer-mono \
@@ -356,12 +333,12 @@ commands() {
 
 prompt_and_run \
   "Do you want to install fonts?" \
-  commands
+  install_fonts
 
 # ===========
 # Set up Dock
 # ===========
-commands() {
+setup_dock() {
   echo "Setting up Dock..."
   dockutil --remove all --no-restart
   dockutil --add "/Applications/Messages.app" --no-restart
@@ -401,12 +378,12 @@ commands() {
 
 prompt_and_run \
   "Do you want to set up Dock?" \
-  commands
+  setup_dock
 
 # ===============
 # Configure macOS
 # ===============
-commands() {
+configure_macos() {
   echo "Configuring macOS..."
   # configure dock
   defaults write com.apple.dock "autohide" -bool "true"
@@ -428,13 +405,13 @@ commands() {
   # restart dock and finder
   killall Dock Finder SystemUIServer
   # todo: add all the things!
-  # - trackpad and mouse settings
+  # - track pad and mouse settings
   # - keyboard settings
 }
 
 prompt_and_run \
   "Do you want to configure macOS?" \
-  commands
+  configure_macos
 
 # ========
 # Menu Bar
