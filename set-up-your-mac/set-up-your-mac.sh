@@ -1,17 +1,22 @@
 #!/bin/bash
 
+# --------------------------------------------------------------------------------
+
 # Exit on errors (-e), unset variables (-u), and pipe failures (-o pipefail).
 set -euo pipefail
 
+# --------------------------------------------------------------------------------
+
+# Reminder, to make this script executable:
+# chmod +x set-up-your-mac.sh
+
+# --------------------------------------------------------------------------------
+
 # Todo:
-# - reorganize installs by type (for example, install mysql and TablePlus in one step).
 # - tell the user what things are about to get installed, and possibly give them a chance to select options.
 # - detect what’s already installed and skip those things.
 # - add Add to Dock... web apps. For example, GitHub.
 # - write in a different language, such as TypeScript, Rust, or Swift -- or all of the above!
-
-# Reminder, to make this script executable:
-# chmod +x set-up-your-mac.sh
 
 # --------------------------------------------------------------------------------
 # Prompt function.
@@ -374,16 +379,18 @@ prompt_and_run \
   "Do you want to download and install AM Master?" \
   download_am_master
 
-# =============
-# Configure git
-# =============
+# --------------------------------------------------------------------------------
+# Git and GitHub CLI.
+# --------------------------------------------------------------------------------
+
+# Configure Git.
 configure_git() {
   echo "Configuring git..."
-  # configure the default branch name
+  # Configure the default branch name.
   git config --global init.defaultBranch main
   git config --global user.name "Christian Areas"
   git config --global user.email me@areas.me
-  # list git configurations
+  # List Git configurations.
   git config -l
 }
 
@@ -391,9 +398,7 @@ prompt_and_run \
   "Do you want to configure git?" \
   configure_git
 
-# ==================
-# Install GitHub CLI
-# ==================
+# Install and configure GitHub CLI.
 install_github_cli() {
   echo "Installing GitHub CLI..."
   brew install gh
@@ -404,21 +409,11 @@ prompt_and_run \
   "Do you want to install GitHub CLI?" \
   install_github_cli
 
-# ===============================
-# Add symlink to iCloud Downloads
-# ===============================
-add_icloud_downloads_symlink() {
-  echo "Adding symlink to iCloud Downloads..."
-  ln -s ~/Library/Mobile\ Documents/com~apple~CloudDocs/Downloads ~/Downloads/iCloud\ Downloads
-}
+# --------------------------------------------------------------------------------
+# FNM.
+# --------------------------------------------------------------------------------
 
-prompt_and_run \
-  "Do you want to add a symlink to iCloud Downloads?" \
-  add_icloud_downloads_symlink
-
-# ===========
-# Install FNM
-# ===========
+# Install FNM.
 install_fnm() {
   echo "Installing FNM..."
   curl -fsSL https://fnm.vercel.app/install | bash
@@ -428,9 +423,7 @@ prompt_and_run \
   "Do you want to install FNM?" \
   install_fnm
 
-# ========================
-# Update and Configure FNM
-# ========================
+# Configure FNM.
 configure_fnm() {
   echo "Updating and configuring FNM..."
   source ~/.zshrc
@@ -444,9 +437,24 @@ prompt_and_run \
   "Do you want to update and configure FNM?" \
   configure_fnm
 
-# =============
-# Install Fonts
-# =============
+# --------------------------------------------------------------------------------
+# Add symlink to iCloud Downloads.
+# --------------------------------------------------------------------------------
+
+add_icloud_downloads_symlink() {
+  echo "Adding symlink to iCloud Downloads..."
+  ln -s ~/Library/Mobile\ Documents/com~apple~CloudDocs/Downloads ~/Downloads/iCloud\ Downloads
+}
+
+prompt_and_run \
+  "Do you want to add a symlink to iCloud Downloads?" \
+  add_icloud_downloads_symlink
+
+# --------------------------------------------------------------------------------
+# Fonts.
+# --------------------------------------------------------------------------------
+
+# Install fonts.
 install_fonts() {
   echo "Installing fonts..."
   brew install --cask \
@@ -465,9 +473,11 @@ prompt_and_run \
   "Do you want to install fonts?" \
   install_fonts
 
-# ===========
-# Set up Dock
-# ===========
+# --------------------------------------------------------------------------------
+# Dock.
+# --------------------------------------------------------------------------------
+
+# Set up Dock.
 setup_dock() {
   echo "Setting up Dock..."
   dockutil --remove all --no-restart
@@ -508,12 +518,14 @@ prompt_and_run \
   "Do you want to set up Dock?" \
   setup_dock
 
-# ===============
-# Configure macOS
-# ===============
+# --------------------------------------------------------------------------------
+# macOS.
+# --------------------------------------------------------------------------------
+
+# Configure macOS.
 configure_macos() {
   echo "Configuring macOS..."
-  # configure dock
+  # Configure Dock.
   defaults write com.apple.dock "autohide" -bool "true"
   defaults write com.apple.dock "autohide-delay" -float "0.25"
   defaults write com.apple.dock "autohide-time-modifier" -float "0.25"
@@ -521,29 +533,29 @@ configure_macos() {
   defaults write com.apple.dock "largesize" -int "175"
   defaults write com.apple.dock "mineffect" -string "scale"
   defaults write com.apple.dock "tilesize" -int "64"
-  # configure finder
+  # Configure Finder.
   defaults write NSGlobalDomain "AppleShowAllExtensions" -bool "true"
   defaults write com.apple.finder "AppleShowAllFiles" -bool "true"
   defaults write com.apple.finder "ShowStatusBar" -bool "true"
-  # configure menu bar
+  # Configure Menu Bar.
   defaults write com.apple.menuextra.clock "FlashDateSeparators" -bool "true"
   defaults write com.apple.menuextra.clock "DateFormat" -string "\"h:mm:ss a\""
-  # configure mission control
+  # Configure Mission Control.
   defaults write com.apple.dock "mru-spaces" -bool "false"
-  # restart dock and finder
+  # Restart Dock and Finder.
   killall Dock Finder SystemUIServer
-  # todo: add all the things!
-  # - track pad and mouse settings
-  # - keyboard settings
+  # Todo: Add all the things!
+  # - Track pad and mouse settings.
+  # - Keyboard settings.
 }
 
 prompt_and_run \
   "Do you want to configure macOS?" \
   configure_macos
 
-# ========
-# Menu Bar
-# ========
+# --------------------------------------------------------------------------------
+# Menu Bar.
+# --------------------------------------------------------------------------------
 # Amphetamine (Coffee Carafe)
 # Day One
 # Elgato Control Center
@@ -564,7 +576,10 @@ prompt_and_run \
 # Control Center
 # Clock
 
-# ===
-# Fin
-# ===
+# --------------------------------------------------------------------------------
+# Fin.
+# --------------------------------------------------------------------------------
+
 echo "*Fin*"
+
+# --------------------------------------------------------------------------------
