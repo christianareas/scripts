@@ -163,10 +163,12 @@ install_homebrew_apps() {
   echo "Installing Homebrew CLI and cask apps..."
   brew install \
     dockutil \
-    helix \
+    imagemagick \
     kind \
     kubectl \
+    mkcert \
     shfmt \
+    vercel-cli \
     wget
   brew install --cask \
     1password \
@@ -174,7 +176,6 @@ install_homebrew_apps() {
     appcleaner \
     balenaetcher \
     brave-browser \
-    chatgpt \
     claude \
     cursor \
     discord \
@@ -187,7 +188,6 @@ install_homebrew_apps() {
     google-chrome \
     karabiner-elements \
     logi-options-plus \
-    microsoft-edge \
     ollama \
     postman \
     qmk-toolbox \
@@ -208,7 +208,6 @@ install_homebrew_apps() {
     warp@preview \
     webex \
     whatsapp \
-    whisky \
     xcodes \
     zen-browser \
     zoom
@@ -364,15 +363,15 @@ setup_dock() {
   dockutil --add "/Applications/Warp.app" --no-restart
   dockutil --add "/Applications/WarpPreview.app" --no-restart
   dockutil --add "/Applications/GitHub Desktop.app" --no-restart
-  dockutil --add "~/Applications/GitHub.app" --no-restart
+  dockutil --add "$HOME/Applications/GitHub.app" --no-restart
   dockutil --add "/Applications/Visual Studio Code.app" --no-restart
   dockutil --add "/Applications/Cursor.app" --no-restart
   dockutil --add "/Applications/TablePlus.app" --no-restart
   dockutil --add "/Applications/Postman.app" --no-restart
-  dockutil --add "~/Applications/Vercel Dashboard.app" --no-restart
-  dockutil --add "~/Applications/Stripe Dashboard.app" --no-restart
+  dockutil --add "$HOME/Applications/Vercel Dashboard.app" --no-restart
+  dockutil --add "$HOME/Applications/Stripe Dashboard.app" --no-restart
   dockutil --add "/Applications" --view grid --display stack --section others --no-restart
-  dockutil --add "~/Downloads" --view grid --display stack --section others --no-restart
+  dockutil --add "$HOME/Downloads" --view grid --display stack --section others --no-restart
   killall Dock
 }
 
