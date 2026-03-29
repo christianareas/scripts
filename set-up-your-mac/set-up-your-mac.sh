@@ -1,13 +1,16 @@
 #!/bin/bash
 
-# todo:
+# Exit on errors (-e), unset variables (-u), and pipe failures (-o pipefail).
+set -euo pipefail
+
+# Todo:
 # - reorganize installs by type (for example, install mysql and tableplus in one step).
 # - tell the user what things are about to get installed, and possibly give them a chance to select options.
 # - detect what’s already installed and skip those things.
 # - add Add to Dock... web apps. For example, GitHub.
 # - write in a different language, such as TypeScript, Rust, or Swift -- or all of the above!
 
-# reminder, to make this script executable:
+# Reminder, to make this script executable:
 # chmod +x set-up-your-mac.sh
 
 # ===============
@@ -15,12 +18,12 @@
 # ===============
 prompt_and_run() {
   while :; do
-    # prompt
+    # Prompt.
     echo "$1"
     echo -n "y/n(skip): "
-    # capture the answer
+    # Capture the answer.
     read -r answer
-    # use the answer to run the commands or skip
+    # Use the answer to run the commands or skip.
     shopt -s nocasematch
     case $answer in
     "y" | "yes")
