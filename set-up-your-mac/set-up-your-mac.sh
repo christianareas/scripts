@@ -103,7 +103,28 @@ prompt_and_run \
   install_app_store_cli
 
 # --------------------------------------------------------------------------------
-# Install Browsers
+# Communications.
+# --------------------------------------------------------------------------------
+
+# Install communications apps.
+install_communications_apps() {
+  echo "Installing communications apps..."
+  brew install --cask \
+    discord \
+    fantastical \
+    readdle-spark \
+    slack \
+    webex \
+    whatsapp \
+    zoom
+}
+
+prompt_and_run \
+  "Do you want to install communications apps?" \
+  install_communications_apps
+
+# --------------------------------------------------------------------------------
+# Browsers.
 # --------------------------------------------------------------------------------
 
 # Install browsers.
@@ -207,11 +228,9 @@ install_homebrew_apps() {
     claude-code \
     codex \
     cursor \
-    discord \
     docker \
     elgato-control-center \
     elgato-stream-deck \
-    fantastical \
     figma \
     github \
     google-drive \
@@ -224,10 +243,8 @@ install_homebrew_apps() {
     postman-cli \
     protonvpn \
     qmk-toolbox \
-    readdle-spark \
     rectangle \
     scrivener \
-    slack \
     slack-cli \
     steam \
     tableplus \
@@ -239,10 +256,7 @@ install_homebrew_apps() {
     visual-studio-code \
     warp \
     warp@preview \
-    webex \
-    whatsapp \
-    xcodes \
-    zoom
+    xcodes
 }
 
 prompt_and_run \
