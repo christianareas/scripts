@@ -98,7 +98,7 @@ prompt_and_run_if_needed() {
   if $all_installed; then
     echo
     echo "$prompt_text"
-    echo "(Already installed. Skipping...)"
+    echo "Already installed. Skipping..."
     return
   fi
 
@@ -337,7 +337,7 @@ install_productivity_utility_apps() {
 prompt_and_run_if_needed \
   "Do you want to install productivity and utility apps?" \
   install_productivity_utility_apps \
-  'all_mas_installed 937984704 409183694 462058435 462054704 409203825 409201541 967805235 1153157709 490179405 1284863847' \
+  'all_mas_installed 937984704 361285480 462058435 462054704 361304891 361309726 967805235 1153157709 490179405 1284863847' \
   'all_casks_installed 1password appcleaner balenaetcher google-drive protonvpn rectangle transmission'
 
 # --------------------------------------------------------------------------------
