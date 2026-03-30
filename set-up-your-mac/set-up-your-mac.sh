@@ -167,18 +167,7 @@ install_app_store_cli() {
 prompt_and_run_if_needed \
   "Do you want to install the App Store CLI?" \
   install_app_store_cli \
-  'all_formulas_installed mas'
-
-# Install dockutil.
-install_dockutil() {
-  echo "Installing dockutil..."
-  brew install dockutil
-}
-
-prompt_and_run_if_needed \
-  "Do you want to install dockutil?" \
-  install_dockutil \
-  'all_formulas_installed dockutil'
+  'command_exists mas'
 
 # --------------------------------------------------------------------------------
 # Installed.
@@ -549,19 +538,6 @@ prompt_and_run \
   configure_fnm
 
 # --------------------------------------------------------------------------------
-# Add symlink to iCloud Downloads.
-# --------------------------------------------------------------------------------
-
-add_icloud_downloads_symlink() {
-  echo "Adding symlink to iCloud Downloads..."
-  ln -s ~/Library/Mobile\ Documents/com~apple~CloudDocs/Downloads ~/Downloads/iCloud\ Downloads
-}
-
-prompt_and_run \
-  "Do you want to add a symlink to iCloud Downloads?" \
-  add_icloud_downloads_symlink
-
-# --------------------------------------------------------------------------------
 # Fonts.
 # --------------------------------------------------------------------------------
 
@@ -587,6 +563,17 @@ prompt_and_run_if_needed \
 # --------------------------------------------------------------------------------
 # Dock.
 # --------------------------------------------------------------------------------
+
+# Install dockutil.
+install_dockutil() {
+  echo "Installing dockutil..."
+  brew install dockutil
+}
+
+prompt_and_run_if_needed \
+  "Do you want to install dockutil?" \
+  install_dockutil \
+  'all_formulas_installed dockutil'
 
 # Set up Dock.
 setup_dock() {
