@@ -15,8 +15,6 @@ set -euo pipefail
 # Todo:
 # - tell the user what things are about to get installed, and possibly give them a chance to select options.
 # - detect what’s already installed and skip those things.
-# - add Add to Dock... web apps. For example, GitHub.
-# - write in a different language, such as TypeScript, Rust, or Swift -- or all of the above!
 
 # --------------------------------------------------------------------------------
 # Prompt function.
