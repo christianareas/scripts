@@ -304,22 +304,22 @@ prompt_and_run_if_needed \
 install_productivity_utility_apps() {
   echo "Installing productivity and utility apps..."
   # 937984704   Amphetamine
-  # 409183694   Keynote
+  # 361285480   Keynote
   # 462058435   Microsoft Excel
   # 462054704   Microsoft Word
-  # 409203825   Numbers
-  # 409201541   Pages
+  # 361304891   Numbers
+  # 361309726   Pages
   # 967805235   Paste
   # 1153157709  Speedtest
   # 490179405   Okta Verify
   # 1284863847  Unsplash Wallpapers
   mas install \
     937984704 \
-    409183694 \
+    361285480 \
     462058435 \
     462054704 \
-    409203825 \
-    409201541 \
+    361304891 \
+    361309726 \
     967805235 \
     1153157709 \
     490179405 \
