@@ -202,11 +202,11 @@ prompt_and_run \
 # Install creativity and entertainment apps.
 install_creativity_entertainment_apps() {
   echo "Installing creativity and entertainment apps..."
-  # 424389933   Final Cut Pro
-  # 682658836   GarageBand
-  # 408981434   iMovie
+  # 450527929  djay Pro
+  # 682658836  GarageBand
+  # 408981434  iMovie
   mas install \
-    424389933 \
+    450527929 \
     682658836 \
     408981434
   brew install --cask \
@@ -416,7 +416,7 @@ install_github_cli() {
 }
 
 prompt_and_run \
-  "Do you want to install GitHub CLI?" \
+  "Do you want to install and configure GitHub CLI?" \
   install_github_cli
 
 # --------------------------------------------------------------------------------
