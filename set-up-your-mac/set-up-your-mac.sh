@@ -433,7 +433,7 @@ prompt_and_run_if_needed \
   'all_casks_installed postman-cli slack-cli'
 
 # --------------------------------------------------------------------------------
-# Peripherals.
+# Peripheral apps.
 # --------------------------------------------------------------------------------
 
 # Install peripheral apps.
@@ -523,9 +523,9 @@ prompt_and_run_if_needed \
   install_fnm \
   'all_formulas_installed fnm'
 
-# Configure FNM.
-configure_fnm() {
-  echo "Updating and configuring FNM..."
+# Update Node.
+update_node() {
+  echo "Updating Node..."
   eval "$(fnm env)"
   fnm install 24
   fnm install 25
@@ -534,8 +534,8 @@ configure_fnm() {
 }
 
 prompt_and_run \
-  "Do you want to update and configure FNM?" \
-  configure_fnm
+  "Do you want to update Node?" \
+  update_node
 
 # --------------------------------------------------------------------------------
 # Fonts.
@@ -611,7 +611,7 @@ setup_dock() {
   dockutil --add "$HOME/Applications/areas.me | Local.app" --no-restart
   dockutil --add "$HOME/Applications/CIMI.app" --no-restart
   dockutil --add "$HOME/Applications/CounterLedger.app" --no-restart
-  dockutil --add "/Applications" --view grid --display stack --section others --no-restart
+  dockutil --add "/Applications" --view grid --display stack --sort name --section others --no-restart
   dockutil --add "$HOME/Downloads" --view grid --display stack --section others --no-restart
   killall Dock
 }
@@ -644,11 +644,21 @@ configure_macos() {
   defaults write com.apple.menuextra.clock "DateFormat" -string "\"h:mm:ss a\""
   # Configure Mission Control.
   defaults write com.apple.dock "mru-spaces" -bool "false"
+  # Configure keyboard.
+  defaults write NSGlobalDomain "KeyRepeat" -int "2"
+  defaults write NSGlobalDomain "InitialKeyRepeat" -int "15"
+  # Configure trackpad.
+  defaults write com.apple.AppleMultitouchTrackpad "Clicking" -bool "true"
+  defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad "Clicking" -bool "true"
+  defaults write com.apple.AppleMultitouchTrackpad "FirstClickThreshold" -int "2"
+  defaults write com.apple.AppleMultitouchTrackpad "SecondClickThreshold" -int "2"
+  defaults write NSGlobalDomain "com.apple.trackpad.scaling" -float "3"
+  # Configure mouse.
+  defaults write NSGlobalDomain "com.apple.mouse.scaling" -float "3"
+  defaults write com.apple.AppleMultitouchMouse "MouseButtonMode" -string "TwoButton"
+  defaults write com.apple.driver.AppleBluetoothMultitouch.mouse "MouseButtonMode" -string "TwoButton"
   # Restart Dock and Finder.
   killall Dock Finder SystemUIServer
-  # Todo: Add all the things!
-  # - Track pad and mouse settings.
-  # - Keyboard settings.
 }
 
 prompt_and_run \
