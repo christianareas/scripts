@@ -2,24 +2,16 @@
 
 # --------------------------------------------------------------------------------
 
-# Exit on errors (-e), unset variables (-u), and pipe failures (-o pipefail).
-set -euo pipefail
-
-# --------------------------------------------------------------------------------
-
 # Reminder, to make this script executable:
 # chmod +x set-up-your-mac.sh
 
 # --------------------------------------------------------------------------------
 
-# Todo:
-# - tell the user what things are about to get installed, and possibly give them a chance to select options.
-# - detect what’s already installed and skip those things.
-# - add Add to Dock... web apps. For example, GitHub.
-# - write in a different language, such as TypeScript, Rust, or Swift -- or all of the above!
+# Exit on errors (-e), unset variables (-u), and pipe failures (-o pipefail).
+set -euo pipefail
 
 # --------------------------------------------------------------------------------
-# Prompt function.
+# Prompt.
 # --------------------------------------------------------------------------------
 prompt_and_run() {
   while :; do
@@ -49,6 +41,71 @@ prompt_and_run() {
 }
 
 # --------------------------------------------------------------------------------
+# See what's installed.
+# --------------------------------------------------------------------------------
+command_exists() {
+  command -v "$1" &>/dev/null
+}
+
+xcode_cli_installed() {
+  xcode-select -p &>/dev/null
+}
+
+rosetta_installed() {
+  [[ "$(uname -m)" != "arm64" ]] || arch -arch x86_64 /usr/bin/true 2>/dev/null
+}
+
+all_formulas_installed() {
+  for formula in "$@"; do
+    if ! echo "$INSTALLED_FORMULAS" | grep -qx "$formula"; then
+      return 1
+    fi
+  done
+  return 0
+}
+
+all_casks_installed() {
+  for cask in "$@"; do
+    if ! echo "$INSTALLED_CASKS" | grep -qx "$cask"; then
+      return 1
+    fi
+  done
+  return 0
+}
+
+all_mas_installed() {
+  for app_id in "$@"; do
+    if ! echo "$INSTALLED_MAS" | grep -qx "$app_id"; then
+      return 1
+    fi
+  done
+  return 0
+}
+
+prompt_and_run_if_needed() {
+  local prompt_text="$1"
+  local run_fn="$2"
+  shift 2
+
+  local all_installed=true
+  for check in "$@"; do
+    if ! eval "$check"; then
+      all_installed=false
+      break
+    fi
+  done
+
+  if $all_installed; then
+    echo
+    echo "$prompt_text"
+    echo "(Already installed. Skipping...)"
+    return
+  fi
+
+  prompt_and_run "$prompt_text" "$run_fn"
+}
+
+# --------------------------------------------------------------------------------
 # Prerequisites.
 # --------------------------------------------------------------------------------
 
@@ -59,9 +116,10 @@ install_xcode_cli_tools() {
   sudo xcodebuild -license accept
 }
 
-prompt_and_run \
+prompt_and_run_if_needed \
   "Do you want to install Xcode Command Line Tools?" \
-  install_xcode_cli_tools
+  install_xcode_cli_tools \
+  'xcode_cli_installed'
 
 # Install Rosetta.
 install_rosetta() {
@@ -69,9 +127,10 @@ install_rosetta() {
   sudo softwareupdate --install-rosetta
 }
 
-prompt_and_run \
+prompt_and_run_if_needed \
   "Do you want to install Rosetta?" \
-  install_rosetta
+  install_rosetta \
+  'rosetta_installed'
 
 # Install Homebrew.
 install_homebrew() {
@@ -94,9 +153,10 @@ install_homebrew() {
   fi
 }
 
-prompt_and_run \
+prompt_and_run_if_needed \
   "Do you want to install Homebrew?" \
-  install_homebrew
+  install_homebrew \
+  'command_exists brew'
 
 # Install App Store CLI.
 install_app_store_cli() {
@@ -104,19 +164,30 @@ install_app_store_cli() {
   brew install mas
 }
 
-prompt_and_run \
+prompt_and_run_if_needed \
   "Do you want to install the App Store CLI?" \
-  install_app_store_cli
+  install_app_store_cli \
+  'command_exists mas'
 
-# Install dockutil.
-install_dockutil() {
-  echo "Installing dockutil..."
-  brew install dockutil
+# --------------------------------------------------------------------------------
+# Installed.
+# --------------------------------------------------------------------------------
+
+# Installed.
+INSTALLED_FORMULAS=$(brew list --formula 2>/dev/null || true)
+INSTALLED_CASKS=$(brew list --cask 2>/dev/null || true)
+INSTALLED_MAS=$(mas list 2>/dev/null | awk '{print $1}' || true)
+
+# Upgrade installed.
+upgrade_packages() {
+  echo "Upgrading installed packages..."
+  brew upgrade
+  mas upgrade
 }
 
 prompt_and_run \
-  "Do you want to install dockutil?" \
-  install_dockutil
+  "Do you want to upgrade installed packages?" \
+  upgrade_packages
 
 # --------------------------------------------------------------------------------
 # Communications.
@@ -135,9 +206,10 @@ install_communications_apps() {
     zoom
 }
 
-prompt_and_run \
+prompt_and_run_if_needed \
   "Do you want to install communications apps?" \
-  install_communications_apps
+  install_communications_apps \
+  'all_casks_installed discord fantastical readdle-spark slack webex whatsapp zoom'
 
 # --------------------------------------------------------------------------------
 # Browsers.
@@ -157,9 +229,11 @@ install_browsers() {
     zen@twilight
 }
 
-prompt_and_run \
+prompt_and_run_if_needed \
   "Do you want to install browsers?" \
-  install_browsers
+  install_browsers \
+  'all_mas_installed 1440147259' \
+  'all_casks_installed brave-browser google-chrome safari-technology-preview zen zen@twilight'
 
 # Install AI browsers.
 install_ai_browsers() {
@@ -169,9 +243,10 @@ install_ai_browsers() {
     comet
 }
 
-prompt_and_run \
+prompt_and_run_if_needed \
   "Do you want to install AI browsers?" \
-  install_ai_browsers
+  install_ai_browsers \
+  'all_casks_installed chatgpt-atlas comet'
 
 # --------------------------------------------------------------------------------
 # Writing.
@@ -191,9 +266,11 @@ install_writing_apps() {
     scrivener
 }
 
-prompt_and_run \
+prompt_and_run_if_needed \
   "Do you want to install writing apps?" \
-  install_writing_apps
+  install_writing_apps \
+  'all_mas_installed 1055511498 775737590' \
+  'all_casks_installed notion obsidian scrivener'
 
 # --------------------------------------------------------------------------------
 # Creativity and entertainment.
@@ -213,9 +290,11 @@ install_creativity_entertainment_apps() {
     steam
 }
 
-prompt_and_run \
+prompt_and_run_if_needed \
   "Do you want to install creativity and entertainment apps?" \
-  install_creativity_entertainment_apps
+  install_creativity_entertainment_apps \
+  'all_mas_installed 450527929 682658836 408981434' \
+  'all_casks_installed steam'
 
 # --------------------------------------------------------------------------------
 # Productivity and utilities.
@@ -225,22 +304,22 @@ prompt_and_run \
 install_productivity_utility_apps() {
   echo "Installing productivity and utility apps..."
   # 937984704   Amphetamine
-  # 409183694   Keynote
+  # 361285480   Keynote
   # 462058435   Microsoft Excel
   # 462054704   Microsoft Word
-  # 409203825   Numbers
-  # 409201541   Pages
+  # 361304891   Numbers
+  # 361309726   Pages
   # 967805235   Paste
   # 1153157709  Speedtest
   # 490179405   Okta Verify
   # 1284863847  Unsplash Wallpapers
   mas install \
     937984704 \
-    409183694 \
+    361285480 \
     462058435 \
     462054704 \
-    409203825 \
-    409201541 \
+    361304891 \
+    361309726 \
     967805235 \
     1153157709 \
     490179405 \
@@ -255,9 +334,11 @@ install_productivity_utility_apps() {
     transmission
 }
 
-prompt_and_run \
+prompt_and_run_if_needed \
   "Do you want to install productivity and utility apps?" \
-  install_productivity_utility_apps
+  install_productivity_utility_apps \
+  'all_mas_installed 937984704 409183694 462058435 462054704 409203825 409201541 967805235 1153157709 490179405 1284863847' \
+  'all_casks_installed 1password appcleaner balenaetcher google-drive protonvpn rectangle transmission'
 
 # --------------------------------------------------------------------------------
 # AI tools.
@@ -273,9 +354,10 @@ install_ai_tools() {
     ollama-app
 }
 
-prompt_and_run \
+prompt_and_run_if_needed \
   "Do you want to install AI tools?" \
-  install_ai_tools
+  install_ai_tools \
+  'all_casks_installed chatgpt claude codex-app ollama-app'
 
 
 # Install AI CLI tools.
@@ -286,9 +368,10 @@ install_ai_cli_tools() {
     codex
 }
 
-prompt_and_run \
+prompt_and_run_if_needed \
   "Do you want to install AI CLI tools?" \
-  install_ai_cli_tools
+  install_ai_cli_tools \
+  'all_casks_installed claude-code codex'
 
 # --------------------------------------------------------------------------------
 # Developer tools.
@@ -319,9 +402,11 @@ install_developer_tools() {
     xcodes-app
 }
 
-prompt_and_run \
+prompt_and_run_if_needed \
   "Do you want to install developer tools?" \
-  install_developer_tools
+  install_developer_tools \
+  'all_mas_installed 640199958 1496833156 497799835' \
+  'all_casks_installed cursor docker-desktop figma github postman tableplus unity-hub visual-studio visual-studio-code warp warp@preview xcodes-app'
 
 
 # Install CLI tools.
@@ -341,12 +426,14 @@ install_cli_tools() {
     xcodes
 }
 
-prompt_and_run \
+prompt_and_run_if_needed \
   "Do you want to install CLI tools?" \
-  install_cli_tools
+  install_cli_tools \
+  'all_formulas_installed imagemagick kind kubernetes-cli mkcert shfmt uv vercel-cli wget xcodes' \
+  'all_casks_installed postman-cli slack-cli'
 
 # --------------------------------------------------------------------------------
-# Peripherals.
+# Peripheral apps.
 # --------------------------------------------------------------------------------
 
 # Install peripheral apps.
@@ -362,9 +449,10 @@ install_peripheral_apps() {
     vial
 }
 
-prompt_and_run \
+prompt_and_run_if_needed \
   "Do you want to install peripheral apps?" \
-  install_peripheral_apps
+  install_peripheral_apps \
+  'all_casks_installed elgato-control-center elgato-stream-deck karabiner-elements logi-options-plus qmk-toolbox via vial'
 
 # Download and install Logi Tune.
 install_logi_tune() {
@@ -415,9 +503,10 @@ install_github_cli() {
   gh auth login
 }
 
-prompt_and_run \
+prompt_and_run_if_needed \
   "Do you want to install and configure GitHub CLI?" \
-  install_github_cli
+  install_github_cli \
+  'all_formulas_installed gh'
 
 # --------------------------------------------------------------------------------
 # FNM.
@@ -429,13 +518,14 @@ install_fnm() {
   curl -fsSL https://fnm.vercel.app/install | bash
 }
 
-prompt_and_run \
+prompt_and_run_if_needed \
   "Do you want to install FNM?" \
-  install_fnm
+  install_fnm \
+  'all_formulas_installed fnm'
 
-# Configure FNM.
-configure_fnm() {
-  echo "Updating and configuring FNM..."
+# Update Node.
+update_node() {
+  echo "Updating Node..."
   eval "$(fnm env)"
   fnm install 24
   fnm install 25
@@ -444,21 +534,8 @@ configure_fnm() {
 }
 
 prompt_and_run \
-  "Do you want to update and configure FNM?" \
-  configure_fnm
-
-# --------------------------------------------------------------------------------
-# Add symlink to iCloud Downloads.
-# --------------------------------------------------------------------------------
-
-add_icloud_downloads_symlink() {
-  echo "Adding symlink to iCloud Downloads..."
-  ln -s ~/Library/Mobile\ Documents/com~apple~CloudDocs/Downloads ~/Downloads/iCloud\ Downloads
-}
-
-prompt_and_run \
-  "Do you want to add a symlink to iCloud Downloads?" \
-  add_icloud_downloads_symlink
+  "Do you want to update Node?" \
+  update_node
 
 # --------------------------------------------------------------------------------
 # Fonts.
@@ -478,13 +555,25 @@ install_fonts() {
     font-sf-pro
 }
 
-prompt_and_run \
+prompt_and_run_if_needed \
   "Do you want to install fonts?" \
-  install_fonts
+  install_fonts \
+  'all_casks_installed font-ia-writer-duo font-ia-writer-mono font-ia-writer-quattro font-new-york font-sf-arabic font-sf-compact font-sf-mono font-sf-pro'
 
 # --------------------------------------------------------------------------------
 # Dock.
 # --------------------------------------------------------------------------------
+
+# Install dockutil.
+install_dockutil() {
+  echo "Installing dockutil..."
+  brew install dockutil
+}
+
+prompt_and_run_if_needed \
+  "Do you want to install dockutil?" \
+  install_dockutil \
+  'all_formulas_installed dockutil'
 
 # Set up Dock.
 setup_dock() {
@@ -522,7 +611,7 @@ setup_dock() {
   dockutil --add "$HOME/Applications/areas.me | Local.app" --no-restart
   dockutil --add "$HOME/Applications/CIMI.app" --no-restart
   dockutil --add "$HOME/Applications/CounterLedger.app" --no-restart
-  dockutil --add "/Applications" --view grid --display stack --section others --no-restart
+  dockutil --add "/Applications" --view grid --display stack --sort name --section others --no-restart
   dockutil --add "$HOME/Downloads" --view grid --display stack --section others --no-restart
   killall Dock
 }
@@ -555,11 +644,21 @@ configure_macos() {
   defaults write com.apple.menuextra.clock "DateFormat" -string "\"h:mm:ss a\""
   # Configure Mission Control.
   defaults write com.apple.dock "mru-spaces" -bool "false"
+  # Configure keyboard.
+  defaults write NSGlobalDomain "KeyRepeat" -int "2"
+  defaults write NSGlobalDomain "InitialKeyRepeat" -int "15"
+  # Configure trackpad.
+  defaults write com.apple.AppleMultitouchTrackpad "Clicking" -bool "true"
+  defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad "Clicking" -bool "true"
+  defaults write com.apple.AppleMultitouchTrackpad "FirstClickThreshold" -int "2"
+  defaults write com.apple.AppleMultitouchTrackpad "SecondClickThreshold" -int "2"
+  defaults write NSGlobalDomain "com.apple.trackpad.scaling" -float "3"
+  # Configure mouse.
+  defaults write NSGlobalDomain "com.apple.mouse.scaling" -float "3"
+  defaults write com.apple.AppleMultitouchMouse "MouseButtonMode" -string "TwoButton"
+  defaults write com.apple.driver.AppleBluetoothMultitouch.mouse "MouseButtonMode" -string "TwoButton"
   # Restart Dock and Finder.
   killall Dock Finder SystemUIServer
-  # Todo: Add all the things!
-  # - Track pad and mouse settings.
-  # - Keyboard settings.
 }
 
 prompt_and_run \
