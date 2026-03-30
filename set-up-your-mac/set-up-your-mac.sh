@@ -174,9 +174,9 @@ prompt_and_run_if_needed \
 # --------------------------------------------------------------------------------
 
 # Installed.
-INSTALLED_FORMULAS=$(brew list --formula 2>/dev/null)
-INSTALLED_CASKS=$(brew list --cask 2>/dev/null)
-INSTALLED_MAS=$(mas list 2>/dev/null | awk '{print $1}')
+INSTALLED_FORMULAS=$(brew list --formula 2>/dev/null || true)
+INSTALLED_CASKS=$(brew list --cask 2>/dev/null || true)
+INSTALLED_MAS=$(mas list 2>/dev/null | awk '{print $1}' || true)
 
 # Upgrade installed.
 upgrade_packages() {
