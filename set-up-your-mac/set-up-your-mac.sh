@@ -443,7 +443,7 @@ install_peripheral_apps() {
     elgato-control-center \
     elgato-stream-deck \
     karabiner-elements \
-    logi-options-plus \
+    logi-options+ \
     qmk-toolbox \
     via \
     vial
@@ -452,7 +452,7 @@ install_peripheral_apps() {
 prompt_and_run_if_needed \
   "Do you want to install peripheral apps?" \
   install_peripheral_apps \
-  'all_casks_installed elgato-control-center elgato-stream-deck karabiner-elements logi-options-plus qmk-toolbox via vial'
+  'all_casks_installed elgato-control-center elgato-stream-deck karabiner-elements logi-options+ qmk-toolbox via vial'
 
 # Download and install Logi Tune.
 install_logi_tune() {
