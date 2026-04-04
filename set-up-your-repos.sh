@@ -10,17 +10,17 @@
 # If a repo doesn’t exist locally, clone it.
 clone_repo() {
   # Variables.
-  url=$1
-  name=$(basename "$url" .git)
+  name=$1
+  dir="${name##*/}"
 
   # If the repo exists locally, skip it.
-  if [ -d "$name" ]; then
-    echo -e "$name already exists locally. Skipping this repo…"
-  
+  if [ -d "$dir" ]; then
+    echo -e "- $dir already exists locally. Skipping this repo…"
+
   # Else, clone it.
   else
     echo -e ""
-    git clone "$url"
+    gh repo clone "$name"
   fi
 }
 
@@ -60,12 +60,12 @@ case ${answer:0:1} in
   "y" | "Yes" )
     echo -e "\nCloning your personal repos…"
     # Create a directory for the user’s personal repos.
-    echo -e "\nCreating $username directory for your personal repos…"
+    echo -e "\nCreating $username directory for your personal repos…\n"
     mkdir -p "$username"
     cd "$username"
 
-    for url in $(gh repo list --json sshUrl,name -q '.[] | .sshUrl'); do
-      clone_repo "$url"
+    for name in $(gh repo list --limit 100 --json nameWithOwner -q '.[].nameWithOwner'); do
+      clone_repo "$name"
     done
     cd ..
   ;;
@@ -73,45 +73,6 @@ case ${answer:0:1} in
     echo -e "\nExiting…"
     exit 0
   ;;
-esac
-
-# ======================
-# Clone User’s Org Repos
-# ======================
-
-# List the user’s orgs.
-echo -e "\nSearching for your orgs…"
-orgs=$(gh org list | awk '{print $1}' | tail -n +4)
-
-# If the user isn’t part of any orgs, exit.
-if [ -z "$orgs" ]; then
-  echo -e "\nYou’re not part of any orgs. Exiting…"
-  exit 0
-fi
-
-# Display the user’s orgs and prompt them to clone their org repos.
-echo -e "\nYou’re part of the following orgs:"
-echo -e "$orgs\n"
-
-read -p "Ready to clone your org repos (y/n)? " answer
-case ${answer:0:1} in
-    "y" | "Yes" )
-        echo -e "\nCloning your org repos…"
-        for org in $orgs; do
-          echo -e "\nCreating $org directory for its repos…"
-          mkdir -p "$org"
-          cd "$org"
-
-          for url in $(gh repo list "$org" --json sshUrl,name -q '.[] | .sshUrl'); do
-            clone_repo "$url"
-          done
-          cd ..
-        done
-    ;;
-    * )
-        echo -e "\nExiting…"
-        exit 0
-    ;;
 esac
 
 echo -e "\nDone!"
