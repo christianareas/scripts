@@ -347,6 +347,9 @@ prompt_and_run_if_needed \
 # Install AI tools.
 install_ai_tools() {
   echo "Installing AI tools..."
+  # 6714467650  Perplexity: Ask Anything
+  mas install \
+    6714467650
   brew install --cask \
     chatgpt \
     claude \
@@ -357,6 +360,7 @@ install_ai_tools() {
 prompt_and_run_if_needed \
   "Do you want to install AI tools?" \
   install_ai_tools \
+  'all_mas_installed 6714467650' \
   'all_casks_installed chatgpt claude codex-app ollama-app'
 
 
