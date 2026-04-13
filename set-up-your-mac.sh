@@ -417,13 +417,14 @@ prompt_and_run_if_needed \
 install_cli_tools() {
   echo "Installing CLI tools..."
   brew install --cask \
+    ngrok \
     postman-cli \
     slack-cli
   brew install \
     biome \
     imagemagick \
     kind \
-    kubectl \
+    kubernetes-cli \
     mkcert \
     rumdl \
     shfmt \
@@ -438,8 +439,8 @@ install_cli_tools() {
 prompt_and_run_if_needed \
   "Do you want to install CLI tools?" \
   install_cli_tools \
-  'all_formulas_installed biome imagemagick kind kubernetes-cli mkcert rumdl shfmt spectral-cli uv vale vercel-cli wget xcodes' \
-  'all_casks_installed postman-cli slack-cli'
+  'all_casks_installed ngrok postman-cli slack-cli' \
+  'all_formulas_installed biome imagemagick kind kubernetes-cli mkcert rumdl shfmt spectral-cli uv vale vercel-cli wget xcodes'
 
 # --------------------------------------------------------------------------------
 # Peripheral apps.
