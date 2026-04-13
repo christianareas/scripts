@@ -621,6 +621,7 @@ setup_dock() {
   dockutil --add "$HOME/Applications/areas.me | Local.app" --no-restart
   dockutil --add "$HOME/Applications/CIMI.app" --no-restart
   dockutil --add "$HOME/Applications/CounterLedger.app" --no-restart
+  dockutil --add "$HOME/Applications/CounterLedger | Local.app" --no-restart
   dockutil --add "/Applications" --view grid --display stack --sort name --section others --no-restart
   dockutil --add "$HOME/Downloads" --view grid --display stack --section others --no-restart
   killall Dock
