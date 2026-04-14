@@ -347,6 +347,9 @@ prompt_and_run_if_needed \
 # Install AI tools.
 install_ai_tools() {
   echo "Installing AI tools..."
+  # 6714467650  Perplexity: Ask Anything
+  mas install \
+    6714467650
   brew install --cask \
     chatgpt \
     claude \
@@ -357,6 +360,7 @@ install_ai_tools() {
 prompt_and_run_if_needed \
   "Do you want to install AI tools?" \
   install_ai_tools \
+  'all_mas_installed 6714467650' \
   'all_casks_installed chatgpt claude codex-app ollama-app'
 
 
@@ -412,15 +416,21 @@ prompt_and_run_if_needed \
 # Install CLI tools.
 install_cli_tools() {
   echo "Installing CLI tools..."
+  brew install --cask \
+    ngrok \
+    postman-cli \
+    slack-cli
   brew install \
+    biome \
     imagemagick \
     kind \
-    kubectl \
+    kubernetes-cli \
     mkcert \
-    postman-cli \
+    rumdl \
     shfmt \
-    slack-cli \
+    spectral-cli \
     uv \
+    vale \
     vercel-cli \
     wget \
     xcodes
@@ -429,8 +439,8 @@ install_cli_tools() {
 prompt_and_run_if_needed \
   "Do you want to install CLI tools?" \
   install_cli_tools \
-  'all_formulas_installed imagemagick kind kubernetes-cli mkcert shfmt uv vercel-cli wget xcodes' \
-  'all_casks_installed postman-cli slack-cli'
+  'all_casks_installed ngrok postman-cli slack-cli' \
+  'all_formulas_installed biome imagemagick kind kubernetes-cli mkcert rumdl shfmt spectral-cli uv vale vercel-cli wget xcodes'
 
 # --------------------------------------------------------------------------------
 # Peripheral apps.
@@ -611,6 +621,7 @@ setup_dock() {
   dockutil --add "$HOME/Applications/areas.me | Local.app" --no-restart
   dockutil --add "$HOME/Applications/CIMI.app" --no-restart
   dockutil --add "$HOME/Applications/CounterLedger.app" --no-restart
+  dockutil --add "$HOME/Applications/CounterLedger | Local.app" --no-restart
   dockutil --add "/Applications" --view grid --display stack --sort name --section others --no-restart
   dockutil --add "$HOME/Downloads" --view grid --display stack --section others --no-restart
   killall Dock
@@ -687,6 +698,17 @@ prompt_and_run \
 # Fantastical
 # Control Center
 # Clock
+
+# --------------------------------------------------------------------------------
+# Cleanup.
+# --------------------------------------------------------------------------------
+
+# Clean up.
+echo
+echo "Cleaning up..."
+mas reset 2>/dev/null || true
+brew autoremove
+brew cleanup
 
 # --------------------------------------------------------------------------------
 # Fin.
