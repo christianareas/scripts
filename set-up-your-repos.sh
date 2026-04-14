@@ -21,6 +21,7 @@ clone_repo() {
   else
     echo -e ""
     gh repo clone "$name"
+    echo -e ""
   fi
 }
 
@@ -41,9 +42,9 @@ fi
 # Change to the path.
 cd "$path"
 
-# ===========================
-# Clone User’s Personal Repos
-# ===========================
+# ==================
+# Clone User’s Repos
+# ==================
 
 # Get the user’s GitHub username.
 username=$(gh api user --jq .login 2> /dev/null)
@@ -54,13 +55,13 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
-# Display the user’s GitHub username and prompt them to clone their personal repos.
-read -p "You’re signed in to GitHub CLI as $username. Ready to clone your personal repos (y/n)? " answer
+# Display the user’s GitHub username and prompt them to clone their repos.
+read -p "You’re signed in to GitHub CLI as $username. Ready to clone your repos (y/n)? " answer
 case ${answer:0:1} in
   "y" | "Yes" )
-    echo -e "\nCloning your personal repos…"
-    # Create a directory for the user’s personal repos.
-    echo -e "\nCreating $username directory for your personal repos…\n"
+    echo -e "\nCloning your repos…"
+    # Create a directory for the user’s repos.
+    echo -e "\nCreating $username directory for your repos…\n"
     mkdir -p "$username"
     cd "$username"
 
