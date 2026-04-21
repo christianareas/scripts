@@ -399,7 +399,6 @@ install_developer_tools() {
     postman \
     tableplus \
     unity-hub \
-    visual-studio \
     visual-studio-code \
     warp \
     warp@preview \
@@ -410,7 +409,7 @@ prompt_and_run_if_needed \
   "Do you want to install developer tools?" \
   install_developer_tools \
   'all_mas_installed 640199958 1496833156 497799835' \
-  'all_casks_installed cursor docker-desktop figma github postman tableplus unity-hub visual-studio visual-studio-code warp warp@preview xcodes-app'
+  'all_casks_installed cursor docker-desktop figma github postman tableplus unity-hub visual-studio-code warp warp@preview xcodes-app'
 
 
 # Install CLI tools.
