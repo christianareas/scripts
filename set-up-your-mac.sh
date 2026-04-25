@@ -303,26 +303,28 @@ prompt_and_run_if_needed \
 # Install productivity and utility apps.
 install_productivity_utility_apps() {
   echo "Installing productivity and utility apps..."
+  # 302584613   Amazon Kindle Reading App
   # 937984704   Amphetamine
   # 361285480   Keynote
   # 462058435   Microsoft Excel
   # 462054704   Microsoft Word
   # 361304891   Numbers
+  # 490179405   Okta Verify
   # 361309726   Pages
   # 967805235   Paste
   # 1153157709  Speedtest
-  # 490179405   Okta Verify
   # 1284863847  Unsplash Wallpapers
   mas install \
+    302584613 \
     937984704 \
     361285480 \
     462058435 \
     462054704 \
     361304891 \
+    490179405 \
     361309726 \
     967805235 \
     1153157709 \
-    490179405 \
     1284863847
   brew install --cask \
     1password \
@@ -337,7 +339,7 @@ install_productivity_utility_apps() {
 prompt_and_run_if_needed \
   "Do you want to install productivity and utility apps?" \
   install_productivity_utility_apps \
-  'all_mas_installed 937984704 361285480 462058435 462054704 361304891 361309726 967805235 1153157709 490179405 1284863847' \
+  'all_mas_installed 302584613 937984704 361285480 462058435 462054704 361304891 490179405 361309726 967805235 1153157709 1284863847' \
   'all_casks_installed 1password appcleaner balenaetcher google-drive protonvpn rectangle transmission'
 
 # --------------------------------------------------------------------------------
@@ -370,12 +372,15 @@ install_ai_cli_tools() {
   brew install --cask \
     claude-code \
     codex
+  brew install \
+    pi-coding-agent
 }
 
 prompt_and_run_if_needed \
   "Do you want to install AI CLI tools?" \
   install_ai_cli_tools \
-  'all_casks_installed claude-code codex'
+  'all_casks_installed claude-code codex' \
+  'all_formulas_installed pi-coding-agent'
 
 # --------------------------------------------------------------------------------
 # Developer tools.
@@ -402,14 +407,15 @@ install_developer_tools() {
     visual-studio-code \
     warp \
     warp@preview \
-    xcodes-app
+    xcodes-app \
+    zed
 }
 
 prompt_and_run_if_needed \
   "Do you want to install developer tools?" \
   install_developer_tools \
   'all_mas_installed 640199958 1496833156 497799835' \
-  'all_casks_installed cursor docker-desktop figma github postman tableplus unity-hub visual-studio-code warp warp@preview xcodes-app'
+  'all_casks_installed cursor docker-desktop figma github postman tableplus unity-hub visual-studio-code warp warp@preview xcodes-app zed'
 
 
 # Install CLI tools.
