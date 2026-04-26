@@ -616,13 +616,14 @@ setup_dock() {
   dockutil --add "/Applications/WarpPreview.app" --no-restart
   dockutil --add "/Applications/GitHub Desktop.app" --no-restart
   dockutil --add "$HOME/Applications/GitHub.app" --no-restart
-  dockutil --add "/Applications/Cursor.app" --no-restart
+  dockutil --add "/Applications/Zed.app" --no-restart
   dockutil --add "/Applications/TablePlus.app" --no-restart
   dockutil --add "$HOME/Applications/Drizzle Studio.app" --no-restart
   dockutil --add "/Applications/Postman.app" --no-restart
   dockutil --add "$HOME/Applications/Vercel Dashboard.app" --no-restart
   dockutil --add "$HOME/Applications/Neon Console.app" --no-restart
   dockutil --add "$HOME/Applications/Stripe Dashboard.app" --no-restart
+  dockutil --add "$HOME/Applications/Plaid Dashboard.app" --no-restart
   dockutil --add "$HOME/Applications/areas.me.app" --no-restart
   dockutil --add "$HOME/Applications/areas.me | Local.app" --no-restart
   dockutil --add "$HOME/Applications/CIMI.app" --no-restart
