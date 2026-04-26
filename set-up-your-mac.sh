@@ -354,6 +354,7 @@ install_ai_tools() {
     chatgpt \
     claude \
     codex-app \
+    google-gemini \
     ollama-app
 }
 
@@ -361,7 +362,7 @@ prompt_and_run_if_needed \
   "Do you want to install AI tools?" \
   install_ai_tools \
   'all_mas_installed 6714467650' \
-  'all_casks_installed chatgpt claude codex-app ollama-app'
+  'all_casks_installed chatgpt claude codex-app google-gemini ollama-app'
 
 
 # Install AI CLI tools.
