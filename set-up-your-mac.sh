@@ -600,6 +600,7 @@ setup_dock() {
   dockutil --add "/Applications/Spark Desktop.app" --no-restart
   dockutil --add "/Applications/Fantastical.app" --no-restart
   dockutil --add "/Applications/Reminders.app" --no-restart
+  dockutil --add "/Applications/Obsidian.app" --no-restart
   dockutil --add "/Applications/Day One.app" --no-restart
   dockutil --add "/Applications/Discord.app" --no-restart
   dockutil --add "/Applications/Slack.app" --no-restart
@@ -614,7 +615,6 @@ setup_dock() {
   dockutil --add "/Applications/Claude.app" --no-restart
   dockutil --add "/Applications/Warp.app" --no-restart
   dockutil --add "/Applications/WarpPreview.app" --no-restart
-  dockutil --add "/Applications/GitHub Desktop.app" --no-restart
   dockutil --add "$HOME/Applications/GitHub.app" --no-restart
   dockutil --add "/Applications/Zed.app" --no-restart
   dockutil --add "/Applications/TablePlus.app" --no-restart
@@ -627,6 +627,7 @@ setup_dock() {
   dockutil --add "$HOME/Applications/areas.me.app" --no-restart
   dockutil --add "$HOME/Applications/areas.me | Local.app" --no-restart
   dockutil --add "$HOME/Applications/CIMI.app" --no-restart
+  dockutil --add "$HOME/Applications/CIMI | Local.app" --no-restart
   dockutil --add "$HOME/Applications/CounterLedger.app" --no-restart
   dockutil --add "$HOME/Applications/CounterLedger | Local.app" --no-restart
   dockutil --add "/Applications" --view grid --display stack --sort name --section others --no-restart
