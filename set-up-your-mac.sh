@@ -199,6 +199,8 @@ install_communications_apps() {
   brew install --cask \
     discord \
     fantastical \
+    notion-calendar \
+    notion-mail \
     readdle-spark \
     slack \
     webex \
@@ -209,7 +211,7 @@ install_communications_apps() {
 prompt_and_run_if_needed \
   "Do you want to install communications apps?" \
   install_communications_apps \
-  'all_casks_installed discord fantastical readdle-spark slack webex whatsapp zoom'
+  'all_casks_installed discord fantastical notion-calendar notion-mail readdle-spark slack webex whatsapp zoom'
 
 # --------------------------------------------------------------------------------
 # Browsers.
@@ -303,6 +305,7 @@ prompt_and_run_if_needed \
 # Install productivity and utility apps.
 install_productivity_utility_apps() {
   echo "Installing productivity and utility apps..."
+  # 1569813296  1Password for Safari
   # 302584613   Amazon Kindle Reading App
   # 937984704   Amphetamine
   # 361285480   Keynote
@@ -315,6 +318,7 @@ install_productivity_utility_apps() {
   # 1153157709  Speedtest
   # 1284863847  Unsplash Wallpapers
   mas install \
+    1569813296 \
     302584613 \
     937984704 \
     361285480 \
@@ -339,7 +343,7 @@ install_productivity_utility_apps() {
 prompt_and_run_if_needed \
   "Do you want to install productivity and utility apps?" \
   install_productivity_utility_apps \
-  'all_mas_installed 302584613 937984704 361285480 462058435 462054704 361304891 490179405 361309726 967805235 1153157709 1284863847' \
+  'all_mas_installed 1569813296 302584613 937984704 361285480 462058435 462054704 361304891 490179405 361309726 967805235 1153157709 1284863847' \
   'all_casks_installed 1password appcleaner balenaetcher google-drive protonvpn rectangle transmission'
 
 # --------------------------------------------------------------------------------
@@ -427,6 +431,7 @@ install_cli_tools() {
     postman-cli \
     slack-cli
   brew install \
+    1password-cli \
     biome \
     imagemagick \
     kind \
@@ -446,7 +451,7 @@ prompt_and_run_if_needed \
   "Do you want to install CLI tools?" \
   install_cli_tools \
   'all_casks_installed ngrok postman-cli slack-cli' \
-  'all_formulas_installed biome imagemagick kind kubernetes-cli mkcert rumdl shfmt spectral-cli uv vale vercel-cli wget xcodes'
+  'all_formulas_installed 1password-cli biome imagemagick kind kubernetes-cli mkcert rumdl shfmt spectral-cli uv vale vercel-cli wget xcodes'
 
 # --------------------------------------------------------------------------------
 # Peripheral apps.
