@@ -353,9 +353,6 @@ prompt_and_run_if_needed \
 # Install AI tools.
 install_ai_tools() {
   echo "Installing AI tools..."
-  # 6714467650  Perplexity: Ask Anything
-  mas install \
-    6714467650
   brew install --cask \
     chatgpt \
     claude \
@@ -367,7 +364,6 @@ install_ai_tools() {
 prompt_and_run_if_needed \
   "Do you want to install AI tools?" \
   install_ai_tools \
-  'all_mas_installed 6714467650' \
   'all_casks_installed chatgpt claude codex-app google-gemini ollama-app'
 
 
@@ -671,6 +667,7 @@ configure_macos() {
   # Configure keyboard.
   defaults write NSGlobalDomain "KeyRepeat" -int "2"
   defaults write NSGlobalDomain "InitialKeyRepeat" -int "15"
+  defaults write NSGlobalDomain "AppleKeyboardUIMode" -int "2"
   # Configure trackpad.
   defaults write com.apple.AppleMultitouchTrackpad "Clicking" -bool "true"
   defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad "Clicking" -bool "true"
