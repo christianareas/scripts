@@ -358,13 +358,14 @@ install_ai_tools() {
     claude \
     codex-app \
     google-gemini \
-    ollama-app
+    ollama-app \
+    opencode-desktop
 }
 
 prompt_and_run_if_needed \
   "Do you want to install AI tools?" \
   install_ai_tools \
-  'all_casks_installed chatgpt claude codex-app google-gemini ollama-app'
+  'all_casks_installed chatgpt claude codex-app google-gemini ollama-app opencode-desktop'
 
 
 # Install AI CLI tools.
@@ -374,6 +375,7 @@ install_ai_cli_tools() {
     claude-code \
     codex
   brew install \
+    opencode \
     pi-coding-agent
 }
 
@@ -381,7 +383,7 @@ prompt_and_run_if_needed \
   "Do you want to install AI CLI tools?" \
   install_ai_cli_tools \
   'all_casks_installed claude-code codex' \
-  'all_formulas_installed pi-coding-agent'
+  'all_formulas_installed opencode pi-coding-agent'
 
 # --------------------------------------------------------------------------------
 # Developer tools.
