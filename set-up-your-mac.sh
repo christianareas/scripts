@@ -528,13 +528,19 @@ prompt_and_run_if_needed \
   'all_formulas_installed gh'
 
 # --------------------------------------------------------------------------------
-# FNM.
+# Node.
 # --------------------------------------------------------------------------------
 
 # Install FNM.
 install_fnm() {
   echo "Installing FNM..."
-  curl -fsSL https://fnm.vercel.app/install | bash
+  brew install fnm
+  if ! grep -q 'fnm env' ~/.zshrc 2>/dev/null; then
+    (
+      echo
+      echo 'eval "$(fnm env --use-on-cd --shell zsh)"'
+    ) >>~/.zshrc
+  fi
 }
 
 prompt_and_run_if_needed \
@@ -546,8 +552,8 @@ prompt_and_run_if_needed \
 update_node() {
   echo "Updating Node..."
   eval "$(fnm env)"
-  fnm install 24
-  fnm install 25
+  fnm install 24 && fnm use 24 && npm install -g corepack && corepack enable
+  fnm install 25 && fnm use 25 && npm install -g corepack && corepack enable
   fnm default 25
   fnm ls
 }
