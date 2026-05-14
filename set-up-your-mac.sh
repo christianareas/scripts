@@ -671,6 +671,8 @@ configure_macos() {
   # Configure trackpad.
   defaults write com.apple.AppleMultitouchTrackpad "Clicking" -bool "true"
   defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad "Clicking" -bool "true"
+  defaults write NSGlobalDomain "com.apple.mouse.tapBehavior" -int "1"
+  defaults -currentHost write NSGlobalDomain "com.apple.mouse.tapBehavior" -int "1"
   defaults write com.apple.AppleMultitouchTrackpad "FirstClickThreshold" -int "2"
   defaults write com.apple.AppleMultitouchTrackpad "SecondClickThreshold" -int "2"
   defaults write NSGlobalDomain "com.apple.trackpad.scaling" -float "3"
@@ -678,6 +680,8 @@ configure_macos() {
   defaults write NSGlobalDomain "com.apple.mouse.scaling" -float "3"
   defaults write com.apple.AppleMultitouchMouse "MouseButtonMode" -string "TwoButton"
   defaults write com.apple.driver.AppleBluetoothMultitouch.mouse "MouseButtonMode" -string "TwoButton"
+  # Flush preferences cache.
+  killall cfprefsd
   # Restart Dock and Finder.
   killall Dock Finder SystemUIServer
 }
