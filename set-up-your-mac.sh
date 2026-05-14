@@ -730,7 +730,7 @@ echo
 echo "Cleaning up..."
 mas reset 2>/dev/null || true
 brew autoremove
-brew cleanup
+brew cleanup -s --prune=all
 
 # --------------------------------------------------------------------------------
 # Fin.
