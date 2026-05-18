@@ -373,7 +373,8 @@ install_ai_cli_tools() {
   echo "Installing AI CLI tools..."
   brew install --cask \
     claude-code \
-    codex
+    codex \
+    copilot-cli
   brew install \
     opencode \
     pi-coding-agent
@@ -382,7 +383,7 @@ install_ai_cli_tools() {
 prompt_and_run_if_needed \
   "Do you want to install AI CLI tools?" \
   install_ai_cli_tools \
-  'all_casks_installed claude-code codex' \
+  'all_casks_installed claude-code codex copilot-cli' \
   'all_formulas_installed opencode pi-coding-agent'
 
 # --------------------------------------------------------------------------------
