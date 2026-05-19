@@ -432,6 +432,7 @@ install_cli_tools() {
     slack-cli
   brew install \
     biome \
+    harper \
     imagemagick \
     kind \
     kubernetes-cli \
@@ -450,7 +451,7 @@ prompt_and_run_if_needed \
   "Do you want to install CLI tools?" \
   install_cli_tools \
   'all_casks_installed 1password-cli ngrok postman-cli slack-cli' \
-  'all_formulas_installed biome imagemagick kind kubernetes-cli mkcert rumdl shfmt spectral-cli uv vale vercel-cli wget xcodes'
+  'all_formulas_installed biome harper imagemagick kind kubernetes-cli mkcert rumdl shfmt spectral-cli uv vale vercel-cli wget xcodes'
 
 # --------------------------------------------------------------------------------
 # Peripheral apps.
