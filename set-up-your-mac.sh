@@ -559,8 +559,8 @@ update_node() {
   echo "Updating Node..."
   eval "$(fnm env)"
   fnm install 24 && fnm use 24 && npm install -g corepack && corepack enable
-  fnm install 25 && fnm use 25 && npm install -g corepack && corepack enable
-  fnm default 25
+  fnm install 26 && fnm use 26 && npm install -g corepack && corepack enable
+  fnm default 26
   fnm ls
 }
 
