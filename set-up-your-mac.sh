@@ -431,7 +431,8 @@ install_cli_tools() {
     1password-cli \
     ngrok \
     postman-cli \
-    slack-cli
+    slack-cli \
+    vercel
   brew install \
     biome \
     harper \
@@ -439,13 +440,13 @@ install_cli_tools() {
     kind \
     kubernetes-cli \
     mkcert \
+    pnpm \
     rumdl \
     shfmt \
     spectral-cli \
     taplo \
     uv \
     vale \
-    vercel-cli \
     wget \
     woff2 \
     xcodes
@@ -454,8 +455,8 @@ install_cli_tools() {
 prompt_and_run_if_needed \
   "Do you want to install CLI tools?" \
   install_cli_tools \
-  'all_casks_installed 1password-cli ngrok postman-cli slack-cli' \
-  'all_formulas_installed biome harper imagemagick kind kubernetes-cli mkcert rumdl shfmt spectral-cli taplo uv vale vercel-cli wget woff2 xcodes'
+  'all_casks_installed 1password-cli ngrok postman-cli slack-cli vercel' \
+  'all_formulas_installed biome harper imagemagick kind kubernetes-cli mkcert pnpm rumdl shfmt spectral-cli taplo uv vale wget woff2 xcodes'
 
 # --------------------------------------------------------------------------------
 # Peripheral apps.
@@ -558,8 +559,8 @@ prompt_and_run_if_needed \
 update_node() {
   echo "Updating Node..."
   eval "$(fnm env)"
-  fnm install 24 && fnm use 24 && npm install -g corepack && corepack enable
-  fnm install 26 && fnm use 26 && npm install -g corepack && corepack enable
+  fnm install 24
+  fnm install 26
   fnm default 26
   fnm ls
 }
