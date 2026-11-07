@@ -355,6 +355,7 @@ install_ai_tools() {
   echo "Installing AI tools..."
   brew install --cask \
     antigravity \
+    block-goose \
     chatgpt \
     claude \
     codex-app \
@@ -366,7 +367,7 @@ install_ai_tools() {
 prompt_and_run_if_needed \
   "Do you want to install AI tools?" \
   install_ai_tools \
-  'all_casks_installed antigravity chatgpt claude codex-app google-gemini ollama-app opencode-desktop'
+  'all_casks_installed antigravity block-goose chatgpt claude codex-app google-gemini ollama-app opencode-desktop'
 
 
 # Install AI CLI tools.
@@ -378,6 +379,7 @@ install_ai_cli_tools() {
     codex \
     copilot-cli
   brew install \
+    block-goose-cli \
     opencode \
     pi-coding-agent
 }
@@ -386,7 +388,7 @@ prompt_and_run_if_needed \
   "Do you want to install AI CLI tools?" \
   install_ai_cli_tools \
   'all_casks_installed antigravity-cli claude-code codex copilot-cli' \
-  'all_formulas_installed opencode pi-coding-agent'
+  'all_formulas_installed block-goose-cli opencode pi-coding-agent'
 
 # --------------------------------------------------------------------------------
 # Developer tools.
