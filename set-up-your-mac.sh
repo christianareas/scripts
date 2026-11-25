@@ -241,14 +241,13 @@ prompt_and_run_if_needed \
 install_ai_browsers() {
   echo "Installing AI browsers..."
   brew install --cask \
-    chatgpt-atlas \
     comet
 }
 
 prompt_and_run_if_needed \
   "Do you want to install AI browsers?" \
   install_ai_browsers \
-  'all_casks_installed chatgpt-atlas comet'
+  'all_casks_installed comet'
 
 # --------------------------------------------------------------------------------
 # Writing.
@@ -472,15 +471,13 @@ install_peripheral_apps() {
     elgato-stream-deck \
     karabiner-elements \
     logi-options+ \
-    qmk-toolbox \
-    via \
-    vial
+    qmk-toolbox
 }
 
 prompt_and_run_if_needed \
   "Do you want to install peripheral apps?" \
   install_peripheral_apps \
-  'all_casks_installed elgato-control-center elgato-stream-deck karabiner-elements logi-options+ qmk-toolbox via vial'
+  'all_casks_installed elgato-control-center elgato-stream-deck karabiner-elements logi-options+ qmk-toolbox'
 
 # Download and install Logi Tune.
 install_logi_tune() {
